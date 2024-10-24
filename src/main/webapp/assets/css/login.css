@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body, html {
+	height: 100%;
+	margin: 0;
+}
+
+.login-page {
+	display: flex;
+    align-items: center;
+    background-color: #f0f8ffa3;
+}
+
+.login-main{
+	width: 100%;
+	padding-bottom: 100px;
+}
+
+.title h2 {
+	padding-bottom: 50px;
+	margin-top: unset;
+}
+
+.login-container{
+	display: flex;
+    justify-content: flex-end;
+    
+    background-image: url("../imgs/healthcare.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 450px;
+}
+
+.form-container{
+	width: 500px;
+    padding-right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.form-container form {
+	width: 100%;
+}
