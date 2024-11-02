@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<!DOCTYPE html>
 	<html>
@@ -5,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Group 7</title>
-		<link href="./assets/css/login.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/assets/css/login.css" rel="stylesheet" type="text/css">
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -15,6 +16,7 @@
 	</head>
 
 	<body class="login-page">
+		<link rel="stylesheet" href="./assets/css/login.css">Ï
 		<div class="login-main">
 			<div class="title">
 				<h2 class="text-center mt-5">Hospital Management System Login</h2>
@@ -36,6 +38,8 @@
 			</div>
 
 		</div>
+		
+		
 
 	</body>
 
