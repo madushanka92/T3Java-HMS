@@ -16,7 +16,6 @@
 	</head>
 
 	<body class="login-page">
-		<link rel="stylesheet" href="./assets/css/login.css">Ï
 		<div class="login-main">
 			<div class="title">
 				<h2 class="text-center mt-5">Hospital Management System Login</h2>
@@ -34,6 +33,13 @@
 						</div>
 						<button type="submit" class="btn btn-primary btn-block">Login</button>
 					</form>
+					
+					<% if (request.getParameter("error") != null) { %>
+					    <div class="error-message">
+					    	<span>Invalid username or password. Please try again.</span>
+					    </div>
+					<% } %>
+					
 				</div>
 			</div>
 

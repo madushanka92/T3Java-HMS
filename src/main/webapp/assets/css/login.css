@@ -37,8 +37,24 @@ body, html {
     padding-right: 25px;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .form-container form {
 	width: 100%;
+}
+
+.error-message{
+	margin-top: 10px;
+    background: #ff00009c;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.error-message span {
+	padding: 10px;
+    color: white;
 }

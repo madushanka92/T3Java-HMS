@@ -1,13 +1,13 @@
 package hospital.group.codes;
 
+import java.io.File;
+import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Servlet implementation class AboutServlet
@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/about")
 public class AboutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,10 +27,11 @@ public class AboutServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath(); // Get the servlet path
 	    String contentPage = "views/" + path + ".jsp"; // Construct the content page path
-	    
+
 
         System.out.println("## A : " + contentPage);
 
@@ -43,9 +44,9 @@ public class AboutServlet extends HttpServlet {
 	    }
 
 	    request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
- 
+
 	}
-	
+
 	// Method to check if the page exists
 	private boolean isPageValid(String pagePath) {
 	    // You can check if the JSP file exists in the specified directory
@@ -56,6 +57,7 @@ public class AboutServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
