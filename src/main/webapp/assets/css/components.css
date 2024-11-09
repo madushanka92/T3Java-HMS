@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.header-container {
+    background-color: rgb(195, 195, 241);
+}
+
+.header-container .container {
+    margin-right: unset;
+}
+
+.header-container #navbarNavDropdown {
+    flex-direction: row-reverse;
+}
+
+.header-container .navbar-nav {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+
+.side-menu {
+	height: 100%;
+}
+
+.side-menu > div {
+	height: 100%;
+}
+
+.side-menu > div > div {
+	height: 100% !important;
+}
+
+.side-menu > div > div > nav.navbar {
+	height: 100%;
+}
+
+/* sideMenu.css */
+.side-menu {
+    background-color: #f5f6fa;
+    width: 250px;
+    height: 100%;
+}
+
+.side-menu nav.navbar {
+    align-items: flex-start;
+}
+
+.side-menu .navTitle {
+    color: black;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #0000005c;
+}
+
+.side-menu .navTitle a {
+    color: inherit;
+}
+
+.side-menu .flex-column.navbar-nav {
+    padding-top: 15px;
+    width: 100%;
+}
+
+.side-menu .nav-item {
+    width: 100%;
+}
+
+.side-menu .nav-item > a {
+    display: flex;
+    align-items: center;
+}
+
+.side-menu .nav-item > a.bg-selected {
+    background-color: #00000017 !important;
+}
+
+.side-menu .nav-item span {
+    padding-left: 10px;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 999; /* Ensure footer stays above other content */
+}

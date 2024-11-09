@@ -1,7 +1,7 @@
 package hospital.group.codes;
 
 import java.io.IOException;
- 
+
 import hospital.group.dbservice.UserService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -41,12 +41,12 @@ public class LoginServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
+
         boolean isAuthenticated = userService.validateUser(username, password);
-        
+
 	    if (isAuthenticated) {
 	    	HttpSession session = request.getSession(true);
 

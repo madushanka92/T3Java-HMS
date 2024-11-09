@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+html{
+	height: 100%;
+}
+
+body {
+	display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page-content {
+	display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+main {
+	background-color: #f1f0f7;
+}
