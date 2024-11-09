@@ -31,6 +31,19 @@
                                 User
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="features" class="nav-link ${pageContext.request.requestURI.endsWith('/features') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                Features
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="featureMapping" class="nav-link ${pageContext.request.requestURI.endsWith('/featureMapping') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                Features Mapping
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

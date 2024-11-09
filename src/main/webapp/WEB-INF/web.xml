@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://xmlns.jakarta.org/xml/ns/javaee http://xmlns.jakarta.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
          
-        <servlet>
+        <!-- <servlet>
             <servlet-name>Home</servlet-name>
             <servlet-class>hospital.group.codes.Home</servlet-class>
-        </servlet>
+        </servlet> -->
 
         <filter>
             <filter-name>AuthenticationFilter</filter-name>
