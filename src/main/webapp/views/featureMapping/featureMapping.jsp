@@ -11,8 +11,9 @@
     List<UserRole> roles = userService.getAllRoles();
 %>
 
-<h2>Feature Management</h2>
-<form action="featureMapping" method="POST">
+<div class="feature-mapping">
+	<h2>Feature Management</h2>
+	<form action="featureMapping" method="POST">
         <table border="1">
             <thead>
                 <tr>
@@ -82,6 +83,7 @@
                 %>
             </tbody>
         </table>
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
     </form>
-
+	
+</div>

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.feature-list table {
+	width: 100%;
+}
+
+.feature-list, .feature-mapping {
+	width: 100%;
+}
+
+.feature-list table tr > td:last-child {
+	display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    flex-direction: row;
+    width: 250px;
+}
+
+.feature-list table tr > th:last-child {
+    width: 250px;
+}
+
+.feature-list .feature-new {
+	padding-top: 15px;
+}
+
+
+.feature-list .feature-new .submit-btn {
+	padding-top: 10px;
+}
+
+.feature-mapping table {
+	width: 100%;
+}
+
+.feature-mapping table tr > td:last-child {
+	display: flex;
+    flex-direction: column;
+}
+
+.feature-mapping table tr > td:last-child > div {
+	display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.feature-mapping table tr > td:last-child > div > label {
+		margin-bottom: unset;
+		min-width: 100px;
+}
+
+.feature-mapping form button {
+	margin-top: 20px;
+}

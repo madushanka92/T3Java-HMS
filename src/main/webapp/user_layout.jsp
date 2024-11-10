@@ -14,6 +14,7 @@
 	<meta charset="UTF-8">
 	<link href="${pageContext.request.contextPath}/assets/css/components.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/assets/css/views.css" rel="stylesheet">
 	
 	<title>User Logged In</title>
 </head>
