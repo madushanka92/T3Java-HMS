@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,35 +35,35 @@ public class FeatureService {
             e.printStackTrace();
         }
         return features;
-        
+
     }
 
 	public void addFeature(Feature feature) throws SQLException {
         String query = "INSERT INTO Feature (featureName, description, isActive) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseConnection.connect();
-             PreparedStatement statement = connection.prepareStatement(query , PreparedStatement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement statement = connection.prepareStatement(query , Statement.RETURN_GENERATED_KEYS)) {
         	connection.setAutoCommit(false);
-        	
+
         	statement.setString(1, feature.getFeatureName());
         	statement.setString(2, feature.getDescription());
         	statement.setBoolean(3, feature.getIsActive());
         	statement.executeUpdate();
-        	
+
         	ResultSet generatedKeys = statement.getGeneratedKeys();
             int featureId = -1;
             if (generatedKeys.next()) {
                 featureId = generatedKeys.getInt(1);
             }
-            
+
             String admingQuery = "SELECT roleId FROM UserRole WHERE roleName = 'Admin'";
             PreparedStatement roleStatement = connection.prepareStatement(admingQuery);
             ResultSet roleResult = roleStatement.executeQuery();
-            
+
             if (roleResult.next()) {
                 int roleId = roleResult.getInt("roleId");
 
                 String fmappingQuery = "INSERT INTO FeatureMapping (featureId, roleId, canCreate, canRead, canUpdate, canDelete) VALUES (?, ?, ?, ?, ?, ?)";
-                
+
                 try (PreparedStatement featureMappingStatement = connection.prepareStatement(fmappingQuery)) {
                     featureMappingStatement.setInt(1, featureId);
                     featureMappingStatement.setInt(2, roleId);
@@ -74,7 +75,7 @@ public class FeatureService {
                 }
             }
             connection.commit();
-            
+
         }
     }
 
@@ -117,7 +118,7 @@ public class FeatureService {
         }
         return isUpdated;
     }
-	
+
 	public boolean toggleFeatureStatus(int featureId, boolean isActive) throws SQLException {
         boolean isUpdated = false;
         String query = "UPDATE Feature SET isActive=? WHERE featureId=?";
@@ -131,7 +132,7 @@ public class FeatureService {
         }
         return isUpdated;
     }
-	
+
 	 public boolean deleteFeature(int featureId) throws SQLException {
 	        boolean isUpdated = false;
 	        String query = "DELETE FROM Feature WHERE featureId=?";

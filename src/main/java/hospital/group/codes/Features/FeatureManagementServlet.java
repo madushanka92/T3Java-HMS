@@ -1,10 +1,5 @@
 package hospital.group.codes.Features;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,6 +9,11 @@ import hospital.group.dbservice.FeatureService;
 import hospital.group.dbservice.UserService;
 import hospital.group.model.Feature;
 import hospital.group.model.UserRole;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class FeatureManagementServlet
@@ -24,7 +24,7 @@ public class FeatureManagementServlet extends HttpServlet {
 	private static FeatureService featureService = new FeatureService();
 	private static UserService userService = new UserService();
 	private static FeatureMappingService mappigService = new FeatureMappingService();
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,26 +36,28 @@ public class FeatureManagementServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//            List<Feature> featureList = featureService.getAllFeatures();
 		//            request.setAttribute("features", featureList);
 		    	    String contentPage = "views/featureMapping/featureMapping.jsp";
-		
+
 			        request.setAttribute("contentPage", contentPage);
-		
+
 		    	    request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		
+
 		List<Feature> features = featureService.getAllFeatures();
         List<UserRole> roles = userService.getAllRoles();
-        
+
         for (Feature feature : features) {
             for (UserRole role : roles) {
                 boolean canCreate = request.getParameter("permissions_" + feature.getFeatureId() + "_" + role.getRoleId() + "_create") != null;
@@ -72,9 +74,9 @@ public class FeatureManagementServlet extends HttpServlet {
                 }
             }
         }
-        
+
         response.sendRedirect(request.getContextPath() + "/features");
-		
+
 	}
 
 }

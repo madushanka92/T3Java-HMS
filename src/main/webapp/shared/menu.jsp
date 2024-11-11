@@ -25,6 +25,13 @@
                                 Patient
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a href="viewPatient" class="nav-link ${pageContext.request.requestURI.endsWith('/viewPatient') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                View Patient
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="userForm" class="nav-link ${pageContext.request.requestURI.endsWith('/userForm') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>

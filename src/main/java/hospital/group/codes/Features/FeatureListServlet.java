@@ -1,7 +1,6 @@
 package hospital.group.codes.Features;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import hospital.group.dbservice.FeatureService;

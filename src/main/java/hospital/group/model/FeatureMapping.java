@@ -79,6 +79,6 @@ public class FeatureMapping {
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
-    
+
+
 }

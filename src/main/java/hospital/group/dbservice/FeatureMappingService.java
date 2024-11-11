@@ -27,16 +27,16 @@ public class FeatureMappingService {
 
 	        statement.setInt(1, featureId);
 	        statement.setInt(2, roleId);
-	        
+
 	        ResultSet result = statement.executeQuery();
-	        
+
 	        if (result.next()) {
 	            return result.getBoolean(permissionType); // Return the permission value
 	        }
 	        return false; // If no result is found, return false
 	    }
 	}
-	
+
 	public void updateFeaturePermissions(int featureId, int roleId, boolean canCreate, boolean canRead, boolean canUpdate, boolean canDelete) throws SQLException {
         String sql = "REPLACE INTO FeatureMapping (featureId, roleId, canCreate, canRead, canUpdate, canDelete, updatedAt) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)";
         try (Connection connection = DatabaseConnection.connect();

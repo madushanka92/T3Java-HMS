@@ -2,6 +2,8 @@ package hospital.group.model;
 
 import java.sql.Date;
 
+
+
 public class Patient {
 	private int patientId;
     private String firstName;
@@ -13,6 +15,10 @@ public class Patient {
     private String address;
     private String emergencyContact;
     private String medicalHistory;
+
+    public Patient() {
+        // You can leave it empty if no initialization is required
+    }
 
 
 	public Patient(int patientId, String firstName, String lastName, Date dateOfBirth, String gender,
@@ -89,6 +95,7 @@ public class Patient {
 	public void setMedicalHistory(String medicalHistory) {
 		this.medicalHistory = medicalHistory;
 	}
+
 
 
 }
