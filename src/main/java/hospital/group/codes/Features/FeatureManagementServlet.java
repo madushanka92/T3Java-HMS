@@ -60,6 +60,11 @@ public class FeatureManagementServlet extends HttpServlet {
 
         for (Feature feature : features) {
             for (UserRole role : roles) {
+            	
+	        	 if ("Admin".equals(role.getRoleName())) {
+	                 continue;
+	             }
+            	 
                 boolean canCreate = request.getParameter("permissions_" + feature.getFeatureId() + "_" + role.getRoleId() + "_create") != null;
                 boolean canRead = request.getParameter("permissions_" + feature.getFeatureId() + "_" + role.getRoleId() + "_read") != null;
                 boolean canUpdate = request.getParameter("permissions_" + feature.getFeatureId() + "_" + role.getRoleId() + "_update") != null;
