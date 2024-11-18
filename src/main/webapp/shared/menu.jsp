@@ -33,6 +33,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="createReport" class="nav-link ${pageContext.request.requestURI.endsWith('/recordForm') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                Create Record
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="viewReport" class="nav-link ${pageContext.request.requestURI.endsWith('/viewReport') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                View Record
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="userForm" class="nav-link ${pageContext.request.requestURI.endsWith('/userForm') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
                                 User
@@ -49,6 +62,20 @@
                             <a href="featureMapping" class="nav-link ${pageContext.request.requestURI.endsWith('/featureMapping') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
                                 Features Mapping
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="addDepartment" class="nav-link ${pageContext.request.requestURI.endsWith('/addDepartment') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                Department
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="viewDepartment" class="nav-link ${pageContext.request.requestURI.endsWith('/viewDepartment') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                View Department
                             </a>
                         </li>
                     </ul>

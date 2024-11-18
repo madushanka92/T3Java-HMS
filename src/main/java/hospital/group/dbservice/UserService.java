@@ -123,4 +123,25 @@ public class UserService {
 	        String hashedInput = hashPassword(inputPassword);
 	        return hashedInput.equals(storedHashedPassword);
 	    }
+	 public List<User> getAllUsers() {
+		    List<User> users = new ArrayList<>();
+		    String sql = "SELECT userId, firstName FROM User";
+
+		    try (Connection connection = DatabaseConnection.connect();
+		         PreparedStatement statement = connection.prepareStatement(sql);
+		         ResultSet resultSet = statement.executeQuery()) {
+
+		        while (resultSet.next()) {
+		            users.add(new User(
+		                resultSet.getInt("userId"), resultSet.getString("firstName"), sql, sql, sql, 0, sql, sql, null
+		            ));
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    return users;
+		}
+
+
+
 }

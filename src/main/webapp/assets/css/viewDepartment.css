@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Container for the page content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header Styles */
+h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Header Row Styling */
+.table thead th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hover Effect on Rows */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Button Styling */
+.table .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.table .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.table .btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.table .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.table .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Empty message styling */
+.no-data {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .table {
+        font-size: 12px;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
