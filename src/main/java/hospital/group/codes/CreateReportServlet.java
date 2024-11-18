@@ -19,18 +19,27 @@ public class CreateReportServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private final ReportService reportService = new ReportService();
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Your logic here, e.g., forwarding to the JSP page
-    	List<Patient> patientList = PatientService.getAllPatients();
+    	String action = request.getParameter("action");
+    	if("success".equals(action)) {
+    		request.setAttribute("contentPage", "views/patient/SuccessFullyAdded.jsp");
+    	}
+
+
+    	else {
+    		List<Patient> patientList = PatientService.getAllPatients();
+
+
 
         // Set as a request attribute
-        request.setAttribute("patientList", patientList);
-        request.setAttribute("contentPage", "/views/patient/newRecord.jsp");
-		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
+    		request.setAttribute("patientList", patientList);
+    		request.setAttribute("contentPage", "/views/patient/newRecord.jsp");
+    		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
     }
-
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,13 +54,13 @@ public class CreateReportServlet extends HttpServlet {
             Report report = new Report(patientId, diagnosis, treatment, reportDate);
 
             // Add the report to the database
-            boolean success = reportService.addReport(report);
+            boolean isSaved = reportService.addReport(report);
 
             // Redirect to reports list page or show error message
-            if (success) {
-                response.sendRedirect(request.getContextPath() + "/viewReports");
+            if (isSaved) {
+                response.sendRedirect(request.getContextPath() + "/createReport?action=success");
             } else {
-                request.setAttribute("errorMessage", "Failed to create report.");
+                response.sendRedirect(request.getContextPath() + "404.jsp");
                 request.getRequestDispatcher("/views/error.jsp").forward(request, response);
             }
         } catch (Exception e) {

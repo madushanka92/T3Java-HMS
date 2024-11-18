@@ -10,13 +10,13 @@ public class Report {
     private LocalDate reportDate;
 
     // Constructor
-    public Report(String reportId, int patientId, String diagnosis, String treatment, LocalDate reportDate) {
-        this.reportId = reportId;
+    public Report(int patientId, String diagnosis, String treatment, LocalDate reportDate) {
         this.patientId = patientId;
         this.diagnosis = diagnosis;
         this.treatment = treatment;
         this.reportDate = reportDate;
     }
+
 
 
 	// Getters and Setters
@@ -60,6 +60,6 @@ public class Report {
         this.reportDate = reportDate;
     }
 
-	
+
 
 }

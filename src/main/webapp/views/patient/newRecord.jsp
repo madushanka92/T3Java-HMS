@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Report</title>
@@ -14,8 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/createReport.css"> <!-- Custom CSS -->
-</head>
-<body>
+
+
     <div class="container">
         <h2>Create Medical Report</h2>
 
@@ -65,5 +62,3 @@
             });
         });
     </script>
-</body>
-</html>
