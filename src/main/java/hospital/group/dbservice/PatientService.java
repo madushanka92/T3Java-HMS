@@ -41,7 +41,7 @@ public class PatientService {
     }
 
     // Get all Patients
-    public static List<Patient> getAllPatients() {
+    public List<Patient> getAllPatients() {
         List<Patient> patientList = new ArrayList<>();
 
         String q = "SELECT patientId, firstName, lastName, dateOfBirth, gender, contactNumber, email, address, emergencyContact, medicalHistory FROM patient";
