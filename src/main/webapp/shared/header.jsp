@@ -19,6 +19,9 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/admissionList">Admissions</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/home">Settings</a>
                         </li>
                         <li class="nav-item">
@@ -27,15 +30,5 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-        
-        <!-- jQuery (Bootstrap 4 and below) -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5hb7O6L5m5d6T5IK5QxQp6Md3ZbIb/v2BTM7LZB" crossorigin="anonymous"></script>
-		
-		<!-- Popper.js (required for dropdowns, tooltips, etc.) -->
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-ZMkU3zzZw6Ib9ROxP/JGVpsGVIqT6EyjC3RHpKqFnp8VCn5Zw5do6S9OxlTIV3+Z" crossorigin="anonymous"></script>
-		
-		<!-- Bootstrap JS -->
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-lpy7MLdpC1vAgEE4tyLTOPOs3Ct7Q+lL0RV1zYVphzZlP2h1rEAhpBvM/TO3xH6F" crossorigin="anonymous"></script>
-		        
+        </nav>        
 </header>

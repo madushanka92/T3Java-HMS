@@ -4,13 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- jQuery (Bootstrap 4 and below) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	<!-- jQuery (Bootstrap 4 and below) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	
+	<!-- Popper.js (required for dropdowns, tooltips, etc.) -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 
-<!-- Popper.js (required for dropdowns, tooltips, etc.) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">   
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Bootstrap JS and Popper.js -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	
+	  
 	<meta charset="UTF-8">
 	<link href="${pageContext.request.contextPath}/assets/css/components.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet">
@@ -39,5 +45,6 @@
 
     <!-- Footer -->
     <jsp:include page="shared/footer.jsp" />
+    
 </body>
 </html>

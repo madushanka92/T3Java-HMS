@@ -71,5 +71,33 @@
        }
       %>
       
+      <%
+   try {
+       con = DatabaseConnection.connect();
+       Statement st = (Statement) con.createStatement();
+       String query = "select count(*) from Admissions";
+       ResultSet rs = st.executeQuery(query);
+       while (rs.next()) {
+           int admissions = rs.getInt(1);
+%>
+
+	<div class="outer-view">
+		<div class="overview-data">
+			<div>
+				Admissions
+			</div>
+			<div>
+				<%= admissions%>
+			</div>
+		</div>
+	</div>
+	 <%
+        }
+           con.close();
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+      %>
+      
       </div>
 </div>
