@@ -43,7 +43,6 @@ public class ReportService {
 
             while (rs.next()) {
                 Report report = new Report(
-                    rs.getString("reportId"),
                     rs.getInt("patientId"),
                     rs.getString("diagnosis"),
                     rs.getString("treatment"),
@@ -108,7 +107,6 @@ public class ReportService {
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
                     report = new Report(
-                        rs.getString("reportId"),
                         rs.getInt("patientId"),
                         rs.getString("diagnosis"),
                         rs.getString("treatment"),

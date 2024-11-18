@@ -27,7 +27,10 @@ public class viewDepartmentServlet extends HttpServlet {
             List<Department> departmentList = departmentService.getAllDepartments();
 
             request.setAttribute("departmentList", departmentList);
-            request.getRequestDispatcher("views/department/viewDepartment.jsp").forward(request, response);
-            request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
+            
+
+            request.setAttribute("contentPage", "views/department/viewDepartment.jsp");
+    		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
+            
         }
 }

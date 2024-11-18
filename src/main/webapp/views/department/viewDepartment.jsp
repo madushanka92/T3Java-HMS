@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/viewDepartment.css">
 
+<div class="view-department">
+
 <div class="container">
     <h2>Department List</h2>
     
@@ -51,3 +53,4 @@
         }
     }
 </script>
+</div>
