@@ -19,6 +19,9 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/createAssignment">Assignment</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/admissionList">Admissions</a>
                         </li>
                         <li class="nav-item">

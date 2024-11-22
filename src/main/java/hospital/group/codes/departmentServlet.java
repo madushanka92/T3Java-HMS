@@ -23,9 +23,9 @@ public class departmentServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 UserService userService = new UserService();
-    	    List<User> userList = userService.getAllUsers(); // Modify to fetch only the necessary fields
+    	 List<User> userList = userService.getAllUsers(); // Modify to fetch only the necessary fields
 
-    	    request.setAttribute("userList", userList); // Set the list of users as a request attribute
+    	request.setAttribute("userList", userList); // Set the list of users as a request attribute
 		String action = request.getParameter("action");
 		if ("success".equals(action)) {
 			request.setAttribute("contentPage", "views/department/departmentSuccess.jsp");

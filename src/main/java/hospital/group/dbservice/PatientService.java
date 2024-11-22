@@ -144,4 +144,28 @@ public class PatientService {
             return false; // Return false if there was an error
         }
     }
+
+    public List<Patient> searchPatients(String searchQuery) {
+        List<Patient> patientList = new ArrayList<>();
+        String query = "SELECT patientId, firstName, lastName FROM patient WHERE CONCAT(firstName, ' ', lastName) LIKE ?";
+
+        try (Connection connection = DatabaseConnection.connect();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, "%" + searchQuery + "%"); // Match search query in first and last names
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Patient patient = new Patient();
+                patient.setPatientId(rs.getInt("patientId"));
+                patient.setFirstName(rs.getString("firstName"));
+                patient.setLastName(rs.getString("lastName"));
+                patientList.add(patient);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return patientList;
+    }
 }

@@ -10,6 +10,10 @@ public class User {
     private String contactNumber;
     private String address;
     private Integer departmentId;
+    private String roleName;
+    private String departmentName;
+
+
 	public User(int userId, String firstName, String lastName, String email, String password, int roleId,
 			String contactNumber, String address, Integer departmentId) {
 		super();
@@ -22,6 +26,9 @@ public class User {
 		this.contactNumber = contactNumber;
 		this.address = address;
 		this.departmentId = departmentId;
+	}
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 	public int getUserId() {
 		return userId;
@@ -78,5 +85,16 @@ public class User {
 		this.departmentId = departmentId;
 	}
 
-
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	public String getDepartmentName() {
+		return departmentName;
+	}
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
 }
