@@ -8,19 +8,18 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Assignment
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.1">Action</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.2">Another action</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.3">Something</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.4">Separated link</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/createAssignment">New Record</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.2">Doctor</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.3">Nurse</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.4">Technician</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <%-- <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/createAssignment">Assignment</a>
-                        </li>
+                        </li> --%>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/admissionList">Admissions</a>
                         </li>

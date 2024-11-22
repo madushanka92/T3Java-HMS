@@ -44,7 +44,7 @@
                     for (User user : userList) {
                 %>
                     <option value="<%= user.getUserId() %>" <%= selectedUser != null && selectedUser.getUserId() == user.getUserId() ? "selected" : "" %> >
-                        <%= user.getFirstName() + " " + user.getLastName() %>
+                        <%= user.getRoleName() + " - " + user.getFirstName() + " " + user.getLastName() %>
                     </option>
                 <%
                     }

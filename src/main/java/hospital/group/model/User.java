@@ -15,6 +15,21 @@ public class User {
 
 
 	public User(int userId, String firstName, String lastName, String email, String password, int roleId,
+			String contactNumber, String address, Integer departmentId, String roleName, String departmentName) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.roleId = roleId;
+		this.contactNumber = contactNumber;
+		this.address = address;
+		this.departmentId = departmentId;
+		this.roleName = roleName;
+		this.departmentName = departmentName;
+	}
+	public User(int userId, String firstName, String lastName, String email, String password, int roleId,
 			String contactNumber, String address, Integer departmentId) {
 		super();
 		this.userId = userId;

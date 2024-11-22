@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,7 +158,7 @@ public class UserService {
 
     public List<User> getAllUsers(String roleName) {
 	    List<User> users = new ArrayList<>();
-	    String sql = "SELECT u.userId, u.firstName, u.lastName, ur.roleName, d.departmentName " +
+	    String sql = "SELECT u.userId, u.firstName, u.lastName, u.email, ur.roleName, d.departmentName " +
                 "FROM User u " +
                 "LEFT JOIN UserRole ur ON u.roleId = ur.roleId " +
                 "LEFT JOIN Department d ON u.departmentId = d.departmentId";
@@ -178,8 +179,8 @@ public class UserService {
 	    	try (ResultSet resultSet = statement.executeQuery()) {
 		        while (resultSet.next()) {
 		            users.add(new User(
-		                resultSet.getInt("userId"), resultSet.getString("firstName"), resultSet.getString("lastName"), sql, sql, 0, sql, sql, null
-		            ));
+		                resultSet.getInt("userId"), resultSet.getString("firstName"), resultSet.getString("lastName"),resultSet.getString("email"), sql,  0, sql, sql, null
+		            ,resultSet.getString("roleName"), resultSet.getString("departmentName") ));
 		        }
 	    	}
 	    } catch (SQLException e) {
@@ -225,4 +226,20 @@ public class UserService {
         return user;
     }
 
+    public boolean deleteUser(int userId) {
+        String sql = "DELETE FROM User WHERE userId = ?";
+        try (Connection connection = DatabaseConnection.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, userId);
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLIntegrityConstraintViolationException e) {
+            // Log the exception for debugging
+            System.err.println("Delete failed due to foreign key constraint: " + e.getMessage());
+            throw new RuntimeException("Cannot delete user because they are assigned to other records.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -51,6 +51,13 @@
                                 User
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a href="user-list" class="nav-link ${pageContext.request.requestURI.endsWith('/user-list') ? 'bg-selected' : ''}">
+                                <i class="fa fa-cog me-2"></i>
+                                User List
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="features" class="nav-link ${pageContext.request.requestURI.endsWith('/features') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
