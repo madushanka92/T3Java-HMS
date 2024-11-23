@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UserServlet
@@ -40,6 +41,22 @@ public class UserServlet extends HttpServlet {
 		if ("success".equals(action)) {
 			request.setAttribute("contentPage", "views/user/userSuccess.jsp");
         }else {
+
+        	if ("error".equals(action)) {
+
+        		HttpSession session = request.getSession();
+
+                // Retrieve and set error message and form data
+                String message = (String) session.getAttribute("errorMessage");
+                User formData = (User) session.getAttribute("formData");
+
+                request.setAttribute("message", message);
+                request.setAttribute("formData", formData);
+
+                // Remove attributes from session
+                session.removeAttribute("errorMessage");
+                session.removeAttribute("formData");
+            }
 
     		// Fetch roles and departments
             List<UserRole> roles = userService.getAllRoles();
@@ -75,13 +92,19 @@ public class UserServlet extends HttpServlet {
         int departmentId = Integer.parseInt(request.getParameter("departmentId"));
 
         User newUser = new User(0 , firstName, lastName, email, password, roleId, contactNumber, address, departmentId);
-        boolean isSaved = userService.createUser(newUser);
+        String isSaved = userService.createUser(newUser);
 
         // Check if save was successful and redirect accordingly
-        if (isSaved) {
+        if (isSaved.equals("User created successfully!")) {
             response.sendRedirect(request.getContextPath() + "/userForm?action=success"); // Redirect to success page
         } else {
-            response.sendRedirect("views/error.jsp"); // Redirect to error page if save fails
+
+        	HttpSession session = request.getSession();
+            session.setAttribute("errorMessage", isSaved);
+            session.setAttribute("formData", newUser);
+
+            response.sendRedirect(request.getContextPath() + "/userForm?action=error");
+
         }
 	}
 

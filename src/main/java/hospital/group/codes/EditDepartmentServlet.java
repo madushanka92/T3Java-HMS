@@ -3,6 +3,7 @@ package hospital.group.codes;
 import java.io.IOException;
 import java.util.List;
 
+import hospital.group.dbservice.UserService;
 import hospital.group.dbservice.departmentService;
 import hospital.group.model.Department;
 import hospital.group.model.User;
@@ -22,10 +23,11 @@ public class EditDepartmentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get department ID from request
         int departmentId = Integer.parseInt(request.getParameter("id"));
+   	 UserService userService = new UserService();
 
         // Retrieve department and list of users
         Department department = departmentService.getDepartmentById(departmentId);
-        List<User> userList = departmentService.getAllUsers(); // Adjust as per your actual method to fetch users
+        List<User> userList = userService.getAllUsers(); // Adjust as per your actual method to fetch users
 
         // Set department and user list as attributes
         request.setAttribute("department", department);

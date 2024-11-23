@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/viewPatient")
 public class viewPatientServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static PatientService patientService = new PatientService();
 
     public viewPatientServlet() {
         super();
@@ -28,7 +29,7 @@ public class viewPatientServlet extends HttpServlet {
 
 
         // Forwarding the data to viewPatient.jsp
-    	List<Patient> patientList =PatientService.getAllPatients();
+    	List<Patient> patientList = patientService.getAllPatients();
 
         request.setAttribute("patientList", patientList);
         request.setAttribute("contentPage", "views/viewPatient.jsp");

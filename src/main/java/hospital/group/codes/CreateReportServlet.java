@@ -19,6 +19,7 @@ public class CreateReportServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private final ReportService reportService = new ReportService();
+    private static PatientService patientService = new PatientService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +31,7 @@ public class CreateReportServlet extends HttpServlet {
 
 
     	else {
-    		List<Patient> patientList = PatientService.getAllPatients();
+    		List<Patient> patientList = patientService.getAllPatients();
 
 
 

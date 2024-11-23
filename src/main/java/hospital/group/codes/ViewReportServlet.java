@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/viewReport")
 public class ViewReportServlet extends HttpServlet {
     private ReportService reportService;
+    private static PatientService patientService = new PatientService();
 
     @Override
     public void init() throws ServletException {
@@ -27,7 +28,7 @@ public class ViewReportServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             // Fetch all patients for the dropdown
-            List<Patient> patientList = PatientService.getAllPatients();
+            List<Patient> patientList = patientService.getAllPatients();
             request.setAttribute("patientList", patientList);
 
             // Check if a patientId is selected

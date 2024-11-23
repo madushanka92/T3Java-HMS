@@ -27,3 +27,24 @@ main {
     overflow: auto;
     height: calc(100% - 60px);
 }
+
+
+.quick-link {
+	width: 100%;
+}
+
+.quick-link .quick-links {
+	width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.quick-link .links {
+	width: 250px;
+	background-color: white;
+    padding: 50px;
+    margin-right: 15px;
+    text-align: center;
+}
