@@ -11,10 +11,11 @@
                                 Assignment
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/createAssignment">New Record</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.2">Doctor</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.3">Nurse</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.4">Technician</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/createAssignment">New Record</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/listDoctorPatientAssignments">Doctor Patient</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/listNurseDoctorAssignments">Nurse Doctor</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/listTechnicianPatientAssignment">Technician Patient</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/listTechnicianDepartmentAssignments">Technician Department</a></li>
                             </ul>
                         </li>
                         <%-- <li class="nav-item">
