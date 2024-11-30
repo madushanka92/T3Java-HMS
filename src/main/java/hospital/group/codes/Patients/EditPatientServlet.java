@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Patients;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/editPatient")
+@WebServlet("/edit-patient")
 public class EditPatientServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class EditPatientServlet extends HttpServlet {
             e.printStackTrace();
 //            response.sendRedirect(request.getContextPath() + "/views/error.jsp");
         }
-        request.setAttribute("contentPage", "views/editPatient.jsp");
+        request.setAttribute("contentPage", "views/patient/edit-patient.jsp");
 		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
     }
 }

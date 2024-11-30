@@ -6,6 +6,8 @@
 <link href="${pageContext.request.contextPath}/assets/css/viewPatient.css" rel="stylesheet">
 
 <div class="container mt-1 view-patient">
+
+        <a href="create-patient" class="btn btn-primary btn-lg">Register New Patient</a>
     <h1 class="text-center mb-4">Patient List</h1>
 
     <div class="table-responsive">

@@ -1,5 +1,5 @@
 // In DepartmentServlet.java
-package hospital.group.codes;
+package hospital.group.codes.Department;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/viewDepartment")
+@WebServlet("/department-list")
 public class viewDepartmentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public class viewDepartmentServlet extends HttpServlet {
             request.setAttribute("departmentList", departmentList);
 
 
-            request.setAttribute("contentPage", "views/department/viewDepartment.jsp");
+            request.setAttribute("contentPage", "views/department/department-list.jsp");
     		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
 
         }

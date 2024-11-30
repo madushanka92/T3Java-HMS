@@ -19,17 +19,11 @@
                                 Profile
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="patientForm" class="nav-link ${pageContext.request.requestURI.endsWith('/patientForm') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Patient
-                            </a>
-                        </li>
                         
                         <li class="nav-item">
-                            <a href="viewPatient" class="nav-link ${pageContext.request.requestURI.endsWith('/viewPatient') ? 'bg-selected' : ''}">
+                            <a href="patient-list" class="nav-link ${pageContext.request.requestURI.endsWith('/patient-list') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
-                                View Patient
+                                Patients
                             </a>
                         </li>
                         <li class="nav-item">
@@ -45,17 +39,11 @@
                                 View Record
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="userForm" class="nav-link ${pageContext.request.requestURI.endsWith('/userForm') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                User
-                            </a>
-                        </li>
                         
                         <li class="nav-item">
                             <a href="user-list" class="nav-link ${pageContext.request.requestURI.endsWith('/user-list') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
-                                User List
+                                Users
                             </a>
                         </li>
                         <li class="nav-item">
@@ -72,17 +60,11 @@
                             </a>
                         </li>
                         
-                        <li class="nav-item">
-                            <a href="addDepartment" class="nav-link ${pageContext.request.requestURI.endsWith('/addDepartment') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Department
-                            </a>
-                        </li>
                         
                         <li class="nav-item">
-                            <a href="viewDepartment" class="nav-link ${pageContext.request.requestURI.endsWith('/viewDepartment') ? 'bg-selected' : ''}">
+                            <a href="department-list" class="nav-link ${pageContext.request.requestURI.endsWith('/department-list') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
-                                View Department
+                                Departments
                             </a>
                         </li>
                     </ul>

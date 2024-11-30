@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Users;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class UserServlet
  */
-@WebServlet("/userForm")
+@WebServlet("/create-user")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 private final UserService userService = new UserService();
@@ -67,7 +67,7 @@ public class UserServlet extends HttpServlet {
             request.setAttribute("roles", roles);
             request.setAttribute("departments", departments);
 
-            request.setAttribute("contentPage", "views/user/userCreateForm.jsp");
+            request.setAttribute("contentPage", "views/user/create-user.jsp");
         }
 		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
 

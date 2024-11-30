@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Patients;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class viewPatient
  */
-@WebServlet("/viewPatient")
+@WebServlet("/patient-list")
 public class viewPatientServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static PatientService patientService = new PatientService();
@@ -32,7 +32,7 @@ public class viewPatientServlet extends HttpServlet {
     	List<Patient> patientList = patientService.getAllPatients();
 
         request.setAttribute("patientList", patientList);
-        request.setAttribute("contentPage", "views/viewPatient.jsp");
+        request.setAttribute("contentPage", "views/patient/patient-list.jsp");
 		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
     }
 

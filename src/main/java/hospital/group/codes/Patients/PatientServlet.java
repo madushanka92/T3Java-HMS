@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Patients;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PatientServlet
  */
-@WebServlet("/patientForm")
+@WebServlet("/create-patient")
 public class PatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final PatientService patienService = new PatientService();
@@ -36,10 +36,9 @@ public class PatientServlet extends HttpServlet {
 
 		String action = request.getParameter("action");
 		if ("success".equals(action)) {
-			request.setAttribute("contentPage", "views/patientSuccess.jsp");
+			request.setAttribute("contentPage", "views/patient/patientSuccess.jsp");
         }else {
-        	String path = request.getServletPath();
-    	    String contentPage = "views/" + path + ".jsp";
+    	    String contentPage = "views/patient/create-patient.jsp";
 
     	    // Check if the content page exists
     	    if (isPageValid(contentPage)) {

@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Department;
 
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/addDepartment")
+@WebServlet("/create-department")
 public class departmentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class departmentServlet extends HttpServlet {
 			request.setAttribute("contentPage", "views/department/departmentSuccess.jsp");
         }else {
     		// Fetch roles and departments
-            request.setAttribute("contentPage", "views/department/departmentCreationForm.jsp");
+            request.setAttribute("contentPage", "views/department/create-department.jsp");
         }
 		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
 
@@ -50,7 +50,7 @@ public class departmentServlet extends HttpServlet {
                 int rowsAffected = statement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                	 response.sendRedirect(request.getContextPath() + "/addDepartment?action=success");
+                	 response.sendRedirect(request.getContextPath() + "/create-department?action=success");
                 } else {
                     response.sendRedirect("error.jsp");
                 }

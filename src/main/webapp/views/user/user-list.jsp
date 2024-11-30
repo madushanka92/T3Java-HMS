@@ -12,6 +12,8 @@
 	        ${param.errorMessage}
 	    </div>
 	</c:if>
+	
+        <a href="create-user" class="btn btn-primary btn-lg">Add New User</a>
         <h1 class="text-center mb-4">User List</h1>
 
         <div class="table-responsive">

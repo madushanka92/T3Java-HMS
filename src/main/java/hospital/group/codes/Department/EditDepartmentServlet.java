@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Department;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/editDepartment")
+@WebServlet("/edit-department")
 public class EditDepartmentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class EditDepartmentServlet extends HttpServlet {
         request.setAttribute("userList", userList);
 
         // Set the contentPage attribute to the correct JSP
-        request.setAttribute("contentPage", "views/department/editDepartment.jsp");
+        request.setAttribute("contentPage", "views/department/edit-department.jsp");
 
         // Forward to user_layout.jsp
         request.getRequestDispatcher("/user_layout.jsp").forward(request, response);

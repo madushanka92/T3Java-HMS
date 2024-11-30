@@ -6,6 +6,8 @@
 <div class="view-department">
 
 <div class="container">
+
+    <a href="create-department" class="btn btn-primary btn-lg">Add New Department</a>
     <h2>Department List</h2>
     
     <table class="table table-striped">
@@ -25,7 +27,7 @@
                     <td>${department.headOfDepartmentId}</td>
                     <td>
                         <!-- Edit Button -->
-                        <a href="${pageContext.request.contextPath}/editDepartment?id=${department.departmentId}" 
+                        <a href="${pageContext.request.contextPath}/edit-department?id=${department.departmentId}" 
                            class="btn btn-sm btn-primary">Edit</a>
                         
                         <!-- Delete Button with Confirmation -->

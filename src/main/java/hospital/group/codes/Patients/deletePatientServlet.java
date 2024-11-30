@@ -1,4 +1,4 @@
-package hospital.group.codes;
+package hospital.group.codes.Patients;
 
 import java.io.IOException;
 

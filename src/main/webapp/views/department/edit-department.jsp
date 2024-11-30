@@ -29,6 +29,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Save Changes</button>
-        <a href="${pageContext.request.contextPath}/viewDepartment" class="btn btn-secondary">Cancel</a>
+        <a href="${pageContext.request.contextPath}/create-department" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
