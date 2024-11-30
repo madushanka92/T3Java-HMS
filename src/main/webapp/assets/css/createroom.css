@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Side Menu */
+.side-menu {
+    background-color: #f5f6fa;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.side-menu .navTitle {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.side-menu .navbar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu .nav-item {
+    margin: 10px 0;
+}
+
+.side-menu .nav-item a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.side-menu .nav-item a:hover,
+.side-menu .nav-item a.bg-selected {
+    background-color: #ddd;
+}
+
+/* Header */
+.header-container {
+    background-color: rgb(195, 195, 241);
+    padding: 10px 20px;
+    margin-left: 260px;
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+}
+
+form {
+    max-width: 600px;
+    margin: auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
