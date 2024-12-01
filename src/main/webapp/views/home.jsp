@@ -1,3 +1,7 @@
+<%@page import="java.util.Map"%>
+<%@page import="hospital.group.dbservice.FeatureService"%>
+<%@page import="hospital.group.dbservice.FeatureMappingService"%>
+<%@page import="hospital.group.model.User"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="hospital.group.db.DatabaseConnection" %>
 <%@page import="java.sql.Statement"%>
@@ -6,7 +10,18 @@
 <link href="${pageContext.request.contextPath}/assets/css/home.css" rel="stylesheet">
 
 <%
- Connection con = null;
+ 	Connection con = null;
+
+	User loggedInUser = (User) session.getAttribute("loggedInUser");
+	int roleId = loggedInUser.getRoleId();
+	FeatureMappingService featureMappingService = new FeatureMappingService();
+	FeatureService featureService = new FeatureService();
+	
+	// Get all feature permissions for the user's role
+	Map<Integer, Map<String, Boolean>> permissions = featureMappingService.getFeaturePermissionsByRole(roleId);
+	
+	// Get feature names mapped to IDs
+	Map<String, Integer> featureMap = featureService.getFeatureNameToIdMap();
 %>
 
 <h2>Welcome to the ABC Hospital !</h2>
@@ -105,18 +120,21 @@
 
 <div class="quick-links">
 
-	<a href="patientForm">
+	<a href="doctor-appointments">
 		<div class="links">
 			View Appointments
 		</div>
 	
 	</a>
 	
-	<a href="admissionList">
-		<div class="links">
-			Admissions
-		</div>
-	</a>
+   	<% if (permissions.containsKey(featureMap.get("Admissions")) && 
+		permissions.get(featureMap.get("Admissions")).get("canRead")) { %>
+		<a href="admissionList">
+			<div class="links">
+				Admissions
+			</div>
+		</a>
+	 <% } %>
 	
 	
 </div>

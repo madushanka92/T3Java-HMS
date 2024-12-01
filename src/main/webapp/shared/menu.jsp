@@ -1,3 +1,23 @@
+<%@page import="java.util.Map"%>
+<%@page import="hospital.group.dbservice.FeatureService"%>
+<%@page import="hospital.group.dbservice.FeatureMappingService"%>
+<%@ page import="hospital.group.model.User" %>
+<%
+
+	User loggedInUser = (User) session.getAttribute("loggedInUser");
+	int roleId = loggedInUser.getRoleId();
+	FeatureMappingService featureMappingService = new FeatureMappingService();
+	FeatureService featureService = new FeatureService();
+	
+	// Get all feature permissions for the user's role
+    Map<Integer, Map<String, Boolean>> permissions = featureMappingService.getFeaturePermissionsByRole(roleId);
+
+    // Get feature names mapped to IDs
+    Map<String, Integer> featureMap = featureService.getFeatureNameToIdMap();
+
+%>
+
+
 <nav>
    <div class="side-menu">
         <div class="d-flex">
@@ -13,19 +33,29 @@
                                 Home
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="${pageContext.request.contextPath}/profile" class="nav-link ${pageContext.request.requestURI.endsWith('/profile') ? 'bg-selected' : ''}">
-                                <i class="fa fa-user me-2"></i>
-                                Profile
-                            </a>
-                        </li>
+                        
+                                             
                         
                         <li class="nav-item">
-                            <a href="patient-list" class="nav-link ${pageContext.request.requestURI.endsWith('/patient-list') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Patients
-                            </a>
-                        </li>
+						    <% if (permissions.containsKey(featureMap.get("UserProfile")) && 
+						           permissions.get(featureMap.get("UserProfile")).get("canRead")) { %>
+						        <a href="${pageContext.request.contextPath}/profile" class="nav-link ${pageContext.request.requestURI.endsWith('/profile') ? 'bg-selected' : ''}">
+						            <i class="fa fa-cog me-2"></i>
+						            Users
+						        </a>
+						    <% } %>
+						</li> 
+                        
+                        <li class="nav-item">
+						    <% if (permissions.containsKey(featureMap.get("Patient")) && 
+						           permissions.get(featureMap.get("Patient")).get("canRead")) { %>
+						        <a href="${pageContext.request.contextPath}/patient-list" class="nav-link ${pageContext.request.requestURI.endsWith('/patient-list') ? 'bg-selected' : ''}">
+						            <i class="fa fa-cog me-2"></i>
+						            Patients
+						        </a>
+						    <% } %>
+						</li>
+						
                         <li class="nav-item">
                             <a href="createReport" class="nav-link ${pageContext.request.requestURI.endsWith('/recordForm') ? 'bg-selected' : ''}">
                                 <i class="fa fa-cog me-2"></i>
@@ -38,35 +68,51 @@
                                 <i class="fa fa-cog me-2"></i>
                                 View Record
                             </a>
-                        </li>
+                        </li>                       
                         
                         <li class="nav-item">
-                            <a href="user-list" class="nav-link ${pageContext.request.requestURI.endsWith('/user-list') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Users
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="features" class="nav-link ${pageContext.request.requestURI.endsWith('/features') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Features
-                            </a>
-                        </li>
+						    <% if (permissions.containsKey(featureMap.get("User")) && 
+						           permissions.get(featureMap.get("User")).get("canRead")) { %>
+						        <a href="${pageContext.request.contextPath}/user-list" class="nav-link ${pageContext.request.requestURI.endsWith('/user-list') ? 'bg-selected' : ''}">
+						            <i class="fa fa-cog me-2"></i>
+						            Users
+						        </a>
+						    <% } %>
+						</li>
+						
+						                
                         
                         <li class="nav-item">
-                            <a href="featureMapping" class="nav-link ${pageContext.request.requestURI.endsWith('/featureMapping') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Features Mapping
-                            </a>
-                        </li>
-                        
-                        
+						    <% if (permissions.containsKey(featureMap.get("Feature")) && 
+						           permissions.get(featureMap.get("Feature")).get("canRead")) { %>
+						        <a href="${pageContext.request.contextPath}/features" class="nav-link ${pageContext.request.requestURI.endsWith('/features') ? 'bg-selected' : ''}">
+						            <i class="fa fa-cog me-2"></i>
+						            Features
+						        </a>
+						    <% } %>
+						</li> 
+						
+						
                         <li class="nav-item">
-                            <a href="department-list" class="nav-link ${pageContext.request.requestURI.endsWith('/department-list') ? 'bg-selected' : ''}">
-                                <i class="fa fa-cog me-2"></i>
-                                Departments
-                            </a>
-                        </li>
+						    <% if (permissions.containsKey(featureMap.get("Feature")) && 
+						           permissions.get(featureMap.get("Feature")).get("canRead")) { %>
+						        <a href="${pageContext.request.contextPath}/featureMapping" class="nav-link ${pageContext.request.requestURI.endsWith('/featureMapping') ? 'bg-selected' : ''}">
+						            <i class="fa fa-cog me-2"></i>
+						            Features Mapping
+						        </a>
+						    <% } %>
+						</li>  
+						
+						
+                        <li class="nav-item">
+						    <% if (permissions.containsKey(featureMap.get("Department")) && 
+						           permissions.get(featureMap.get("Department")).get("canRead")) { %>
+						        <a href="${pageContext.request.contextPath}/department-list" class="nav-link ${pageContext.request.requestURI.endsWith('/department-list') ? 'bg-selected' : ''}">
+						            <i class="fa fa-cog me-2"></i>
+						            Departments
+						        </a>
+						    <% } %>
+						</li> 
                     </ul>
                 </nav>
             </div>
