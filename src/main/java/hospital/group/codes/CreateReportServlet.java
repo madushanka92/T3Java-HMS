@@ -27,6 +27,7 @@ public class CreateReportServlet extends HttpServlet {
     	String action = request.getParameter("action");
     	if("success".equals(action)) {
     		request.setAttribute("contentPage", "views/patient/SuccessFullyAdded.jsp");
+    		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
     	}
 
 

@@ -24,6 +24,7 @@ public class ViewReportServlet extends HttpServlet {
         reportService = new ReportService();
     }
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -35,15 +36,18 @@ public class ViewReportServlet extends HttpServlet {
             String patientIdParam = request.getParameter("patientId");
             if (patientIdParam != null && !patientIdParam.isEmpty()) {
                 int patientId = Integer.parseInt(patientIdParam);
-                Report reports = reportService.getReportById(Integer.valueOf(patientId));
+                List<Report> reports = reportService.getReportsByPatientId(patientId);
                 request.setAttribute("reports", reports);
             }
 
             // Forward to JSP
-            request.getRequestDispatcher("/views/patient/viewReport.jsp").forward(request, response);
+
+    		request.setAttribute("contentPage", "/views/patient/viewReport.jsp");
+            request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             throw new ServletException("Error retrieving reports", e);
         }
     }
-}
+ }
+

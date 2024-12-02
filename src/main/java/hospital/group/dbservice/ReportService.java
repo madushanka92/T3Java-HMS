@@ -95,28 +95,32 @@ public class ReportService {
     }
 
     // Method to fetch a single report by reportId
-    public Report getReportById(Integer integer) {
-        String query = "SELECT * FROM Reports WHERE reportId = ?";
-        Report report = null;
+ // Fetch all reports by patient ID
+    public List<Report> getReportsByPatientId(int patientId) {
+        String query = "SELECT reportId, patientId, diagnosis, treatment, reportDate FROM Reports WHERE patientId = ?";
+        List<Report> reports = new ArrayList<>();
 
         try (Connection connection = DatabaseConnection.connect();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setLong(1, integer);
+            statement.setInt(1, patientId);
 
             try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
-                    report = new Report(
+                while (rs.next()) {
+                    Report report = new Report(
+                        rs.getInt("reportId"),       // Ensure this matches the Report constructor
                         rs.getInt("patientId"),
                         rs.getString("diagnosis"),
                         rs.getString("treatment"),
                         rs.getDate("reportDate").toLocalDate()
                     );
+                    reports.add(report);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return report;
+        return reports;
     }
 }
+

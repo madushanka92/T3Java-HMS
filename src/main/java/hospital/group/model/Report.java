@@ -10,12 +10,15 @@ public class Report {
     private LocalDate reportDate;
 
     // Constructor
-    public Report(int patientId, String diagnosis, String treatment, LocalDate reportDate) {
+    public Report(int reportId, int patientId, String diagnosis, String treatment, LocalDate reportDate) {
+        this.reportId = String.valueOf(reportId); 
         this.patientId = patientId;
         this.diagnosis = diagnosis;
         this.treatment = treatment;
         this.reportDate = reportDate;
     }
+
+
 
 
 
