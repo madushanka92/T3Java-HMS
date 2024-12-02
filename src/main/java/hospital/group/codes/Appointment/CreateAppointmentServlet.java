@@ -39,7 +39,7 @@ public class CreateAppointmentServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		UserService userService = new UserService();
         departmentService departmentService = new departmentService();
 
@@ -67,7 +67,7 @@ public class CreateAppointmentServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
         int doctorId = Integer.parseInt(request.getParameter("doctorId"));
         int departmentId = Integer.parseInt(request.getParameter("departmentId"));
@@ -79,7 +79,7 @@ public class CreateAppointmentServlet extends HttpServlet {
         AppointmentService appointmentService = new AppointmentService();
         Appointment appointment = appointmentService.createAppointment(patientId, doctorId, departmentId, appointmentDate, appointmentTime, status, type);
 
-        if (appointment != null) { 
+        if (appointment != null) {
             request.setAttribute("appointment", appointment);
 
             String contentPage = "views/appointment/appointment-created.jsp";

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +14,15 @@ import hospital.group.db.DatabaseConnection;
 import hospital.group.model.Appointment;
 
 public class AppointmentService {
-	
-	public Appointment createAppointment(int patientId, int doctorId, int departmentId, Date appointmentDate, 
+
+	public Appointment createAppointment(int patientId, int doctorId, int departmentId, Date appointmentDate,
             Time appointmentTime, String status, String type) {
 			String query = "INSERT INTO Appointment (patientId, doctorId, departmentId, appointmentDate, appointmentTime, status, type) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			Appointment appointment = null;
-			
+
 			try (Connection connection = DatabaseConnection.connect();
-			PreparedStatement statement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
-			
+			PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
 				statement.setInt(1, patientId);
 				statement.setInt(2, doctorId);
 				statement.setInt(3, departmentId);
@@ -29,7 +30,7 @@ public class AppointmentService {
 				statement.setTime(5, appointmentTime);
 				statement.setString(6, status);
 				statement.setString(7, type);
-				
+
 				int rowsAffected = statement.executeUpdate();
 				if (rowsAffected > 0) {
 					// Get the generated appointmentId
@@ -39,14 +40,14 @@ public class AppointmentService {
 						appointment = new Appointment(appointmentId, patientId, doctorId, departmentId, appointmentDate, appointmentTime, status, type);
 					}
 				}
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
+
 			return appointment;
 	}
-	
+
     public List<Appointment> getAppointmentsForDoctor(int doctorId) {
         List<Appointment> appointments = new ArrayList<>();
         String query = "SELECT a.appointmentId, a.patientId, a.doctorId, a.departmentId, a.appointmentDate, " +
@@ -75,7 +76,7 @@ public class AppointmentService {
                     rs.getString("status"),
                     rs.getString("type")
                 );
-                
+
                 // Add extra patient and department details to the appointment
                 appointment.setPatientFirstName(rs.getString("patientFirstName"));
                 appointment.setPatientLastName(rs.getString("patientLastName"));
@@ -90,7 +91,7 @@ public class AppointmentService {
 
         return appointments;
     }
-    
+
     public boolean markAppointmentAsCompleted(int appointmentId) {
         String query = "UPDATE Appointment SET status = 'Completed' WHERE appointmentId = ?";
 

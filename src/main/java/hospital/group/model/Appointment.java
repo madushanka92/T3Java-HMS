@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Appointment {
-	
+
 	private int appointmentId;
     private int patientId;
     private int doctorId;
@@ -16,8 +16,8 @@ public class Appointment {
     private String patientFirstName;
     private String patientLastName;
     private String departmentName;
-    
-    
+
+
 	public Appointment(int appointmentId, int patientId, int doctorId, int departmentId, Date appointmentDate,
 			Time appointmentTime, String status, String type) {
 		super();
@@ -140,8 +140,8 @@ public class Appointment {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-    
-	
-    
+
+
+
 
 }
