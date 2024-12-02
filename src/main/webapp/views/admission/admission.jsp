@@ -1,9 +1,33 @@
+<%@page import="java.util.Map"%>
+<%@page import="hospital.group.dbservice.FeatureService"%>
+<%@page import="hospital.group.dbservice.FeatureMappingService"%>
+<%@page import="hospital.group.model.User"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%
+
+	User loggedInUser = (User) session.getAttribute("loggedInUser");
+	int roleId = loggedInUser.getRoleId();
+	FeatureMappingService featureMappingService = new FeatureMappingService();
+	FeatureService featureService = new FeatureService();
+	
+	// Get all feature permissions for the user's role
+    Map<Integer, Map<String, Boolean>> permissions = featureMappingService.getFeaturePermissionsByRole(roleId);
+
+    // Get feature names mapped to IDs
+    Map<String, Integer> featureMap = featureService.getFeatureNameToIdMap();
+
+%>
+
 <div class="container admission-list">
     <h2>Admissions List</h2>
-    <a href="admissionForm" class="btn btn-primary mt-2 mb-3">Add New Admission</a>
+    
+    
+   	<% if (permissions.containsKey(featureMap.get("Admissions")) && 
+      permissions.get(featureMap.get("Admissions")).get("canCreate")) { %>
+    	<a href="admissionForm" class="btn btn-primary mt-2 mb-3">Add New Admission</a>
+    <% } %>
     <table class="table">
         <thead>
         <tr>

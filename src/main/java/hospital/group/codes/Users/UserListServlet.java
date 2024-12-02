@@ -37,7 +37,7 @@ public class UserListServlet extends HttpServlet {
         request.setAttribute("users", users);
 
 
-        request.setAttribute("contentPage", "views/user/userList.jsp");
+        request.setAttribute("contentPage", "views/user/user-list.jsp");
 		request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
 
 	}

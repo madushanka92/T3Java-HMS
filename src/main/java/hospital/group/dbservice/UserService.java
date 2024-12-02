@@ -52,6 +52,7 @@ public class UserService {
 
                     HttpSession session = request.getSession();
                     session.setAttribute("loggedInUser", user);
+        	    	session.setAttribute("userId", user.getUserId());
                 }
             }
 
