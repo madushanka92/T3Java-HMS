@@ -85,6 +85,14 @@
                                 View Department
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+    						<a href="paymentForm" class="nav-link ${pageContext.request.requestURI.endsWith('/addPayment') ? 'bg-selected' : ''}">
+        						<i class="fa fa-credit-card me-2"></i>
+        						Add Payment
+    						</a>
+						</li>
+                                                               
                     </ul>
                 </nav>
             </div>

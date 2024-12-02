@@ -13,7 +13,7 @@
         <h2>View Medical Reports</h2>
 
         <!-- Patient Selection Form -->
-        <form action="${pageContext.request.contextPath}/viewReports" method="GET">
+        <form action="${pageContext.request.contextPath}/viewReport" method="GET">
             <div class="form-group">
                 <label for="patientId">Select Patient</label>
                 <select id="patientId" name="patientId" class="form-control" required>
