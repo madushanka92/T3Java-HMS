@@ -1,3 +1,22 @@
+<%@page import="java.util.Map"%>
+<%@page import="hospital.group.dbservice.FeatureService"%>
+<%@page import="hospital.group.dbservice.FeatureMappingService"%>
+<%@page import="hospital.group.model.User"%>
+<%
+
+	User loggedInUser = (User) session.getAttribute("loggedInUser");
+	int roleId = loggedInUser.getRoleId();
+	FeatureMappingService featureMappingService = new FeatureMappingService();
+	FeatureService featureService = new FeatureService();
+	
+	// Get all feature permissions for the user's role
+    Map<Integer, Map<String, Boolean>> permissions = featureMappingService.getFeaturePermissionsByRole(roleId);
+
+    // Get feature names mapped to IDs
+    Map<String, Integer> featureMap = featureService.getFeatureNameToIdMap();
+
+%>
+
 <header>
    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary header-container">
             <div class="container">
@@ -6,17 +25,63 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav me-auto">
+                    
+                        <li class="nav-item">
+                          <% if (permissions.containsKey(featureMap.get("Appointments")) && 
+           					permissions.get(featureMap.get("Appointments")).get("canCreate")) { %>
+                            	<a class="nav-link" href="${pageContext.request.contextPath}/create-appointment">Appointment</a>
+                       		<% } %>
+                        </li>
+                        
                         <li class="nav-item dropdown">
+                        
+                        <% if (permissions.containsKey(featureMap.get("Assignment")) && 
+	           			  permissions.get(featureMap.get("Assignment")).get("canRead")) { %>
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                Assignment
                             </a>
+                          <% } %>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.1">Action</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.2">Another action</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.3">Something</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/action/3.4">Separated link</a></li>
+                                <li>
+	                                <% if (permissions.containsKey(featureMap.get("Assignment")) && 
+							           permissions.get(featureMap.get("Assignment")).get("canCreate")) { %>
+	                                	<a class="dropdown-item" href="${pageContext.request.contextPath}/createAssignment">New Record</a>
+							    	<% } %>
+                               	</li>
+                                <li>
+	                                <% if (permissions.containsKey(featureMap.get("DoctorPatient")) && 
+							           permissions.get(featureMap.get("DoctorPatient")).get("canRead")) { %>
+                                		<a class="dropdown-item" href="${pageContext.request.contextPath}/listDoctorPatientAssignments">Doctor Patient</a>
+							    	<% } %>
+                               	</li>
+                                <li>
+	                                <% if (permissions.containsKey(featureMap.get("NurseDoctor")) && 
+							           permissions.get(featureMap.get("NurseDoctor")).get("canRead")) { %>
+                                		<a class="dropdown-item" href="${pageContext.request.contextPath}/listNurseDoctorAssignments">Nurse Doctor</a>
+							    	<% } %>
+                               	</li>
+                                <li>
+	                                <% if (permissions.containsKey(featureMap.get("TechnicianPatient")) && 
+							           permissions.get(featureMap.get("TechnicianPatient")).get("canRead")) { %>
+                                		<a class="dropdown-item" href="${pageContext.request.contextPath}/listTechnicianPatientAssignment">Technician Patient</a>
+							    	<% } %>
+                               	</li>
+                                <li>
+	                                <% if (permissions.containsKey(featureMap.get("TechnicianDepartment")) && 
+							           permissions.get(featureMap.get("TechnicianDepartment")).get("canRead")) { %>
+                                		<a class="dropdown-item" href="${pageContext.request.contextPath}/listTechnicianDepartmentAssignments">Technician Department</a>
+							    	<% } %>
+                               	</li>
                             </ul>
+                        </li>
+                        <%-- <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/createAssignment">Assignment</a>
+                        </li> --%>
+                        <li class="nav-item">
+                          <% if (permissions.containsKey(featureMap.get("Admissions")) && 
+           					permissions.get(featureMap.get("Admissions")).get("canRead")) { %>
+                            	<a class="nav-link" href="${pageContext.request.contextPath}/admissionList">Admissions</a>
+                       		<% } %>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/home">Settings</a>
@@ -27,15 +92,5 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-        
-        <!-- jQuery (Bootstrap 4 and below) -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5hb7O6L5m5d6T5IK5QxQp6Md3ZbIb/v2BTM7LZB" crossorigin="anonymous"></script>
-		
-		<!-- Popper.js (required for dropdowns, tooltips, etc.) -->
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-ZMkU3zzZw6Ib9ROxP/JGVpsGVIqT6EyjC3RHpKqFnp8VCn5Zw5do6S9OxlTIV3+Z" crossorigin="anonymous"></script>
-		
-		<!-- Bootstrap JS -->
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-lpy7MLdpC1vAgEE4tyLTOPOs3Ct7Q+lL0RV1zYVphzZlP2h1rEAhpBvM/TO3xH6F" crossorigin="anonymous"></script>
-		        
+        </nav>        
 </header>

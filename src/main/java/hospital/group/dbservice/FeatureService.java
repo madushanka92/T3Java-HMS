@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import hospital.group.db.DatabaseConnection;
 import hospital.group.model.Feature;
@@ -143,4 +145,18 @@ public class FeatureService {
 	        }
 	     	return isUpdated;
 	    }
+
+	 public Map<String, Integer> getFeatureNameToIdMap() throws SQLException {
+		    String query = "SELECT featureId, featureName FROM Feature Where isActive = 1";
+		    Map<String, Integer> featureMap = new HashMap<>();
+
+		    try (Connection connection = DatabaseConnection.connect();
+		         PreparedStatement statement = connection.prepareStatement(query);
+		         ResultSet resultSet = statement.executeQuery()) {
+		        while (resultSet.next()) {
+		            featureMap.put(resultSet.getString("featureName"), resultSet.getInt("featureId"));
+		        }
+		    }
+		    return featureMap;
+		}
 }

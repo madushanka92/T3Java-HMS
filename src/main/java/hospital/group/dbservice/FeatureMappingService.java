@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import hospital.group.db.DatabaseConnection;
 
@@ -50,4 +52,27 @@ public class FeatureMappingService {
         	statment.executeUpdate();
         }
     }
+
+	public Map<Integer, Map<String, Boolean>> getFeaturePermissionsByRole(int roleId) throws SQLException {
+	    String query = "SELECT featureId, canCreate, canRead, canUpdate, canDelete FROM FeatureMapping WHERE roleId = ?";
+	    Map<Integer, Map<String, Boolean>> permissions = new HashMap<>();
+
+	    try (Connection connection = DatabaseConnection.connect();
+	         PreparedStatement statement = connection.prepareStatement(query)) {
+	        statement.setInt(1, roleId);
+	        ResultSet resultSet = statement.executeQuery();
+
+	        while (resultSet.next()) {
+	            Map<String, Boolean> featurePermissions = new HashMap<>();
+	            featurePermissions.put("canCreate", resultSet.getBoolean("canCreate"));
+	            featurePermissions.put("canRead", resultSet.getBoolean("canRead"));
+	            featurePermissions.put("canUpdate", resultSet.getBoolean("canUpdate"));
+	            featurePermissions.put("canDelete", resultSet.getBoolean("canDelete"));
+
+	            permissions.put(resultSet.getInt("featureId"), featurePermissions);
+	        }
+	    }
+	    return permissions;
+	}
+
 }

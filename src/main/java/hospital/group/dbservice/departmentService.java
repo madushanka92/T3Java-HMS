@@ -1,4 +1,3 @@
-
 package hospital.group.dbservice;
 
 import java.sql.Connection;
@@ -16,19 +15,25 @@ public class departmentService {
 
     public List<Department> getAllDepartments() {
         List<Department> departmentList = new ArrayList<>();
-        String query = "SELECT departmentId, departmentName, headOfDepartmentId FROM Department";
+        String query = "SELECT d.departmentId, d.departmentName, d.headOfDepartmentId, " +
+                       "CONCAT(u.firstName, ' ', u.lastName) AS headOfDepartmentName " +
+                       "FROM Department d " +
+                       "LEFT JOIN User u ON d.headOfDepartmentId = u.userId";
 
         try (Connection connection = DatabaseConnection.connect();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery()) {
 
             while (rs.next()) {
-                // Use the constructor with parameters
+                // Use the constructor with headOfDepartmentName
                 Department department = new Department(
                     rs.getInt("departmentId"),
                     rs.getString("departmentName"),
-                    rs.getInt("headOfDepartmentId")
+                    rs.getInt("headOfDepartmentId"),
+                    rs.getString("headOfDepartmentName")
                 );
+
+
                 departmentList.add(department);
             }
         } catch (SQLException e) {
@@ -40,7 +45,11 @@ public class departmentService {
 
     public Department getDepartmentById(int departmentId) {
         Department department = null;
-        String query = "SELECT departmentId, departmentName, headOfDepartmentId FROM Department WHERE departmentId = ?";
+        String query = "SELECT d.departmentId, d.departmentName, d.headOfDepartmentId, " +
+                "CONCAT(u.firstName, ' ', u.lastName) AS headOfDepartmentName " +
+                "FROM Department d " +
+                "LEFT JOIN `User` u ON d.headOfDepartmentId = u.userId " +
+                "WHERE d.departmentId = ?";
 
         try (Connection connection = DatabaseConnection.connect();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -49,11 +58,11 @@ public class departmentService {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                // Use the constructor with parameters
                 department = new Department(
                     rs.getInt("departmentId"),
                     rs.getString("departmentName"),
-                    rs.getInt("headOfDepartmentId")
+                    rs.getInt("headOfDepartmentId"),
+                    rs.getString("headOfDepartmentName")
                 );
             }
         } catch (SQLException e) {
@@ -65,18 +74,17 @@ public class departmentService {
 
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
-        String query = "SELECT userId, firstName, lastName FROM Users"; // Adjust column names as needed
+        String query = "SELECT userId, firstName, lastName FROM Users";
 
         try (Connection connection = DatabaseConnection.connect();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery()) {
 
             while (rs.next()) {
-                // Create User object with proper constructor
                 User user = new User(
                     rs.getInt("userId"),
                     rs.getString("firstName"),
-                    rs.getString("lastName"), query, query, 0, query, query, null
+                    rs.getString("lastName"), null, null, 0, null, null, null
                 );
                 userList.add(user);
             }
@@ -95,11 +103,11 @@ public class departmentService {
             statement.setInt(1, departmentId);
             int rowsAffected = statement.executeUpdate();
 
-            return rowsAffected > 0; // Returns true if at least one row was deleted
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false; // Returns false if the deletion fails
+        return false;
     }
 
     public boolean updateDepartment(Department department) {
@@ -113,12 +121,12 @@ public class departmentService {
             statement.setInt(3, department.getDepartmentId());
 
             int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0; // Returns true if update is successful
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return false; // Returns false if update fails
+        return false;
     }
 
 }

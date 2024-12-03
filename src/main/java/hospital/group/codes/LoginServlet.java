@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        boolean isAuthenticated = userService.validateUser(username, password);
+        boolean isAuthenticated = userService.validateUser(request , username, password);
 
 	    if (isAuthenticated) {
 	    	HttpSession session = request.getSession(true);

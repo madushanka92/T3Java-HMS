@@ -4,13 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- jQuery (Bootstrap 4 and below) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	<!-- jQuery (Bootstrap 4 and below) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	
+	<!-- Popper.js (required for dropdowns, tooltips, etc.) -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 
-<!-- Popper.js (required for dropdowns, tooltips, etc.) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">   
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Bootstrap JS and Popper.js -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	
+	
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
+	  
 	<meta charset="UTF-8">
 	<link href="${pageContext.request.contextPath}/assets/css/components.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet">
@@ -39,5 +52,6 @@
 
     <!-- Footer -->
     <jsp:include page="shared/footer.jsp" />
+    
 </body>
 </html>

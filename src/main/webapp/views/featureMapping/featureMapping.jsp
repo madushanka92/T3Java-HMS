@@ -11,10 +11,15 @@
     List<UserRole> roles = userService.getAllRoles();
 %>
 
-<div class="feature-mapping">
-	<h2>Feature Management</h2>
+<div class="container mt-1">
+ <div class="card shadow">
+  <div class="card-header bg-primary text-white">
+            <h3 class="text-center">Feature Management</h3>
+        </div>
+        
+        <div class="card-body">
 	<form action="featureMapping" method="POST">
-        <table border="1">
+        <table border="1" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Feature Name</th>
@@ -85,5 +90,7 @@
         </table>
         <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
     </form>
+	</div>
 	
+	</div>
 </div>
