@@ -101,7 +101,7 @@ public class UserService {
 	            while (resultSet.next()) {
 	                departments.add(new Department(
 	                    resultSet.getInt("departmentId"),
-	                    resultSet.getString("departmentName"), 0
+	                    resultSet.getString("departmentName"), 0, ""
 	                ));
 	            }
 	        } catch (SQLException e) {

@@ -32,7 +32,6 @@ public class departmentService {
                     rs.getInt("headOfDepartmentId"),
                     rs.getString("headOfDepartmentName")
                 );
-                System.out.println("-----");
 
 
                 departmentList.add(department);
