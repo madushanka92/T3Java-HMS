@@ -124,6 +124,13 @@
         						Add Payment
     						</a>
 						</li>
+						
+						 <li class="nav-item">
+                            <a href="viewRoom" class="nav-link ${pageContext.request.requestURI.endsWith('/viewRoom') ? 'bg-selected' : ''}">
+                                <i class="fa fa-building me-2"></i>
+                                View Room
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
