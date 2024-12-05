@@ -42,21 +42,22 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="admission" items="${admissions}">
-            <tr>
-                <td>${admission.admissionId}</td>
-                <td>${admission.patientId}</td>
-                <td>${admission.roomId == 0 ? "Waiting" : admission.roomId}</td>
-                <td>${admission.departmentId}</td>
-                <td>${admission.admissionStatus}</td>
-                <td>${admission.admissionDate}</td>
-                <td>${admission.dischargeDate != null ? admission.dischargeDate : "N/A"}</td>
-                <td>
-                    <a href="admissionForm?id=${admission.admissionId}" class="btn btn-secondary">Edit</a>
-                    <a href="admissionDelete?id=${admission.admissionId}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
+		    <c:forEach var="admission" items="${admissions}">
+		        <tr>
+		            <td>${admission.admissionId}</td>
+		            <td>${admission.patientName}</td>
+		            <td>${admission.roomNumber}</td>
+		            <td>${admission.departmentName}</td>
+		            <td>${admission.admissionStatus}</td>
+		            <td>${admission.admissionDate}</td>
+		            <td>${admission.dischargeDate != null ? admission.dischargeDate : "N/A"}</td>
+		            <td>
+		                <a href="admissionForm?id=${admission.admissionId}" class="btn btn-secondary">Edit</a>
+		                <a href="admissionDelete?id=${admission.admissionId}" class="btn btn-danger">Delete</a>
+		            </td>
+		        </tr>
+		    </c:forEach>
+		</tbody>
+
     </table>
 </div>

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import hospital.group.db.DatabaseConnection;
 import hospital.group.model.Room;
@@ -139,5 +141,34 @@ public class RoomService {
             System.err.println("Error saving room: " + e.getMessage());
             return false;
         }
+    }
+
+    public List<Room> getAllRooms() {
+        List<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM room";
+
+        try (Connection connection = DatabaseConnection.connect();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Room room = new Room(
+                    resultSet.getString("roomId"),
+                    resultSet.getString("roomNumber"),
+                    resultSet.getString("roomType"),
+                    resultSet.getString("availabilityStatus"),
+                    resultSet.getString("assignedPatientId"),
+                    resultSet.getInt("floorNumber"),
+                    resultSet.getString("departmentId"),
+                    resultSet.getString("lastCleanedAt"),
+                    resultSet.getDouble("dailyRate")
+                );
+                rooms.add(room);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rooms;
     }
 }

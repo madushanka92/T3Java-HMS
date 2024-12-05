@@ -11,6 +11,9 @@ public class Admission {
     private Timestamp dischargeDate;
     private String admissionStatus;
     private String notes;
+    private String patientName; // Patient full name
+    private String roomNumber; // Room number or "Waiting"
+    private String departmentName; // Department name
 
 	public Admission(int admissionId, int patientId, int roomId, int departmentId, Timestamp admissionDate,
 			Timestamp dischargeDate, String admissionStatus, String notes) {
@@ -25,9 +28,74 @@ public class Admission {
 		this.notes = notes;
 	}
 
+
+
+
+
+	public Admission(int admissionId, String patientName, String roomNumber, String departmentName, String admissionStatus,Timestamp admissionDate, Timestamp dischargeDate,
+			String notes) {
+		super();
+		this.admissionId = admissionId;
+		this.admissionDate = admissionDate;
+		this.dischargeDate = dischargeDate;
+		this.admissionStatus = admissionStatus;
+		this.notes = notes;
+		this.patientName = patientName;
+		this.roomNumber = roomNumber;
+		this.departmentName = departmentName;
+	}
+
+
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+
+
+
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+
+
+
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+
+
+
 	public Admission() {
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+
+
+
+
+
+
+
 
 	public int getAdmissionId() {
 		return admissionId;

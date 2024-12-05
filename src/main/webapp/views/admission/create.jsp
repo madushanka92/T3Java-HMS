@@ -20,9 +20,17 @@
 		</div>
 
         <div class="form-group">
-            <label for="roomId">Room ID:</label>
-            <input type="number" id="roomId" name="roomId" value="${admission.roomId}" class="form-control" placeholder="Leave empty for 'Pending'">
-        </div>
+		    <label for="roomId">Room:</label>
+		    <select id="roomId" name="roomId" class="form-control">
+		        <option value="" disabled selected>Select a Room</option> <!-- Default option -->
+		        <c:forEach var="room" items="${rooms}">
+		            <option value="${room.roomId}" 
+		                    ${admission != null && admission.roomId == room.roomId ? 'selected' : ''}>
+		                Room ${room.roomNumber} - ${room.roomType} (${room.availabilityStatus})
+		            </option>
+		        </c:forEach>
+		    </select>
+		</div>
         
         <div class="form-group">
 		    <label for="departmentId">Department:</label>

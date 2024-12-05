@@ -15,30 +15,54 @@ import hospital.group.model.Admission;
 public class AdmissionService {
 
 	public List<Admission> getAllAdmissions() {
-        String sql = "SELECT * FROM Admissions";
-        List<Admission> admissions = new ArrayList<>();
-        try (Connection connection = DatabaseConnection.connect();
-             PreparedStatement statement = connection.prepareStatement(sql);
-             ResultSet resultSet = statement.executeQuery()) {
+	    String sql = """
+	        SELECT
+	            a.admissionId,
+	            p.firstName AS patientFirstName,
+	            p.lastName AS patientLastName,
+	            r.roomNumber,
+	            r.roomType,
+	            d.departmentName,
+	            a.admissionStatus,
+	            a.admissionDate,
+	            a.dischargeDate,
+	            a.notes
+	        FROM
+	            Admissions a
+	        JOIN
+	            Patient p ON a.patientId = p.patientId
+	        LEFT JOIN
+	            Room r ON a.roomId = r.roomId
+	        JOIN
+	            Department d ON a.departmentId = d.departmentId
+	        ORDER BY
+	            a.admissionId DESC
+	    """;
 
-            while (resultSet.next()) {
-                Admission admission = new Admission(
-                    resultSet.getInt("admissionId"),
-                    resultSet.getInt("patientId"),
-                    resultSet.getInt("roomId"),
-                    resultSet.getInt("departmentId"),
-                    resultSet.getTimestamp("admissionDate"),
-                    resultSet.getTimestamp("dischargeDate"),
-                    resultSet.getString("admissionStatus"),
-                    resultSet.getString("notes")
-                );
-                admissions.add(admission);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return admissions;
-    }
+	    List<Admission> admissions = new ArrayList<>();
+	    try (Connection connection = DatabaseConnection.connect();
+	         PreparedStatement statement = connection.prepareStatement(sql);
+	         ResultSet resultSet = statement.executeQuery()) {
+
+	        while (resultSet.next()) {
+	            Admission admission = new Admission(
+	                resultSet.getInt("admissionId"),
+	                resultSet.getString("patientFirstName") + " " + resultSet.getString("patientLastName"),
+	                resultSet.getString("roomNumber"),
+	                resultSet.getString("departmentName"),
+	                resultSet.getString("admissionStatus"),
+	                resultSet.getTimestamp("admissionDate"),
+	                resultSet.getTimestamp("dischargeDate"),
+	                resultSet.getString("notes")
+	            );
+	            admissions.add(admission);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return admissions;
+	}
+
 
 	public boolean createAdmission(Admission admission) {
         String sql = "INSERT INTO Admissions (patientId, roomId, departmentId, admissionDate, dischargeDate, admissionStatus, notes) VALUES (?, ?, ?, ?, ?, ?, ?)";

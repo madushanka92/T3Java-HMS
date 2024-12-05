@@ -243,4 +243,71 @@ public class UserService {
             return false;
         }
     }
+
+ // Method to fetch user by username
+    public User getUserByUsername(Integer userId) {
+        User user = null;
+        String query = "SELECT u.*, r.roleName, d.departmentName " +
+                "FROM User u " +
+                "LEFT JOIN UserRole r ON u.roleId = r.roleId " +
+                "LEFT JOIN Department d ON u.departmentId = d.departmentId " +
+                "WHERE u.userId = ?";
+
+    	System.out.println("userId : " + userId);
+
+        try (Connection conn =  DatabaseConnection.connect(); // Establish connection
+             PreparedStatement stmt = conn.prepareStatement(query)) { // Prepare query
+
+            stmt.setInt(1, userId); // Set username parameter
+            ResultSet rs = stmt.executeQuery(); // Execute the query
+
+            if (rs.next()) {
+            	System.out.println("User : " + rs);
+                // If a user is found, map the result set to a User object
+                user = new User();
+                user.setUserId(rs.getInt("userId"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRoleId(rs.getInt("roleId"));
+                user.setContactNumber(rs.getString("contactNumber"));
+                user.setAddress(rs.getString("address"));
+                user.setDepartmentId(rs.getInt("departmentId"));
+
+                user.setRoleName(rs.getString("roleName"));
+                user.setDepartmentName(rs.getString("departmentName"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle any SQL exceptions
+        }
+        return user; // Return the User object (could be null if not found)
+    }
+
+    public boolean updateUser(User user) {
+        String sql = "UPDATE user SET firstName = ?, lastName = ?, email = ?, contactNumber = ?, address = ?, roleId = ?, departmentId = ? WHERE userId = ?";
+
+        try (Connection connection = DatabaseConnection.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            // Set the parameters for the update query
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getContactNumber());
+            statement.setString(5, user.getAddress());
+            statement.setInt(6, user.getRoleId());
+            statement.setInt(7, user.getDepartmentId());
+            statement.setInt(8, user.getUserId());
+
+            // Execute the update query
+            int rowsAffected = statement.executeUpdate();
+
+            // Return true if the user details were updated, otherwise false
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

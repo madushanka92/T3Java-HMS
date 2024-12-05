@@ -9,10 +9,12 @@ import java.util.List;
 
 import hospital.group.dbservice.AdmissionService;
 import hospital.group.dbservice.PatientService;
+import hospital.group.dbservice.RoomService;
 import hospital.group.dbservice.UserService;
 import hospital.group.model.Admission;
 import hospital.group.model.Department;
 import hospital.group.model.Patient;
+import hospital.group.model.Room;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,6 +30,8 @@ public class AdmissionFormServlet extends HttpServlet {
 	private static AdmissionService admissionService = new AdmissionService();
 	private final UserService userService = new UserService();
 	private final PatientService patienService = new PatientService();
+
+	private final RoomService roomService = new RoomService();
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -48,9 +52,12 @@ public class AdmissionFormServlet extends HttpServlet {
 
         List<Department> departments = userService.getAllDepartments();
     	List<Patient> patients = patienService.getAllPatients();
+    	List<Room> rooms = roomService.getAllRooms(); // Fetch room data
+
 
         request.setAttribute("departments", departments);
         request.setAttribute("patients", patients);
+        request.setAttribute("rooms", rooms);
 
         request.setAttribute("admission", admission);
 
