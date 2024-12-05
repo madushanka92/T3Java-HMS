@@ -120,12 +120,15 @@
 
 <div class="quick-links">
 
+   	<% if (permissions.containsKey(featureMap.get("Appointments")) && 
+		permissions.get(featureMap.get("Appointments")).get("canRead")) { %>
 	<a href="doctor-appointments">
 		<div class="links">
 			View Appointments
 		</div>
 	
 	</a>
+	 <% } %>
 	
    	<% if (permissions.containsKey(featureMap.get("Admissions")) && 
 		permissions.get(featureMap.get("Admissions")).get("canRead")) { %>

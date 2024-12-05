@@ -23,6 +23,12 @@ public class UserRole {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+	public UserRole() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 
 }

@@ -26,7 +26,7 @@
             <select id="availabilityStatus" name="availabilityStatus" class="form-control">
                 <option value="Available">Available</option>
                 <option value="Occupied">Occupied</option>
-                <option value="Under Maintenance">Under Maintenance</option>
+                <option value="Maintenance">Maintenance</option>
             </select>
         </div>
 
@@ -46,7 +46,6 @@
         <option value="2">2. ICU</option>
         <option value="3">3. ETU</option>
         <option value="4">4. OPD</option>
-        <option value="5">5. asd</option>
     </select>
 </div>
     

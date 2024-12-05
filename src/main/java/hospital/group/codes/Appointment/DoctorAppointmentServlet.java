@@ -5,6 +5,7 @@ import java.util.List;
 
 import hospital.group.dbservice.AppointmentService;
 import hospital.group.model.Appointment;
+import hospital.group.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,6 +34,13 @@ public class DoctorAppointmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int doctorId = (int) request.getSession().getAttribute("userId");
+		User user = (User) request.getSession().getAttribute("loggedInUser");
+
+		String roleName = user.getRoleName();
+
+		if ("Admin".equals(roleName)) {
+	        doctorId = 0; // Set doctorId to null if the user is an Admin
+	    }
 
         AppointmentService appointmentService = new AppointmentService();
         List<Appointment> appointments = appointmentService.getAppointmentsForDoctor(doctorId);

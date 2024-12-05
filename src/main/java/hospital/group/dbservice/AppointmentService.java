@@ -48,49 +48,60 @@ public class AppointmentService {
 			return appointment;
 	}
 
-    public List<Appointment> getAppointmentsForDoctor(int doctorId) {
-        List<Appointment> appointments = new ArrayList<>();
-        String query = "SELECT a.appointmentId, a.patientId, a.doctorId, a.departmentId, a.appointmentDate, " +
-                       "a.appointmentTime, a.status, a.type, p.firstName AS patientFirstName, p.lastName AS patientLastName, " +
-                       "d.departmentName " +
-                       "FROM Appointment a " +
-                       "JOIN Patient p ON a.patientId = p.patientId " +
-                       "JOIN Department d ON a.departmentId = d.departmentId " +
-                       "WHERE a.doctorId = ?";
+	public List<Appointment> getAppointmentsForDoctor(Integer doctorId) {
+	    List<Appointment> appointments = new ArrayList<>();
+	    String query = "SELECT a.appointmentId, a.patientId, a.doctorId, a.departmentId, a.appointmentDate, " +
+	                   "a.appointmentTime, a.status, a.type, p.firstName AS patientFirstName, p.lastName AS patientLastName, " +
+	                   "d.departmentName " +
+	                   "FROM Appointment a " +
+	                   "JOIN Patient p ON a.patientId = p.patientId " +
+	                   "JOIN Department d ON a.departmentId = d.departmentId ";
 
-        try (Connection connection = DatabaseConnection.connect();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+	    System.out.println("doctorId " + doctorId);
 
-            statement.setInt(1, doctorId);
-            ResultSet rs = statement.executeQuery();
+	    // Add the WHERE clause only if doctorId is not null
+	    if (doctorId != 0) {
+	        query += "WHERE a.doctorId = ?";
+	    }
 
-            while (rs.next()) {
-                // Create an Appointment object with the results from the query
-                Appointment appointment = new Appointment(
-                    rs.getInt("appointmentId"),
-                    rs.getInt("patientId"),
-                    rs.getInt("doctorId"),
-                    rs.getInt("departmentId"),
-                    rs.getDate("appointmentDate"),
-                    rs.getTime("appointmentTime"),
-                    rs.getString("status"),
-                    rs.getString("type")
-                );
+	    try (Connection connection = DatabaseConnection.connect();
+	         PreparedStatement statement = connection.prepareStatement(query)) {
 
-                // Add extra patient and department details to the appointment
-                appointment.setPatientFirstName(rs.getString("patientFirstName"));
-                appointment.setPatientLastName(rs.getString("patientLastName"));
-                appointment.setDepartmentName(rs.getString("departmentName"));
+	        // Set the parameter if doctorId is not null
+	        if (doctorId != 0) {
+	            statement.setInt(1, doctorId);
+	        }
 
-                appointments.add(appointment);
-            }
+	        ResultSet rs = statement.executeQuery();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	        while (rs.next()) {
+	            // Create an Appointment object with the results from the query
+	            Appointment appointment = new Appointment(
+	                rs.getInt("appointmentId"),
+	                rs.getInt("patientId"),
+	                rs.getInt("doctorId"),
+	                rs.getInt("departmentId"),
+	                rs.getDate("appointmentDate"),
+	                rs.getTime("appointmentTime"),
+	                rs.getString("status"),
+	                rs.getString("type")
+	            );
 
-        return appointments;
-    }
+	            // Add extra patient and department details to the appointment
+	            appointment.setPatientFirstName(rs.getString("patientFirstName"));
+	            appointment.setPatientLastName(rs.getString("patientLastName"));
+	            appointment.setDepartmentName(rs.getString("departmentName"));
+
+	            appointments.add(appointment);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return appointments;
+	}
+
 
     public boolean markAppointmentAsCompleted(int appointmentId) {
         String query = "UPDATE Appointment SET status = 'Completed' WHERE appointmentId = ?";

@@ -132,6 +132,16 @@
                             </a>
                         </li>
                         
+                        
+                        
+                        
+						 <li class="nav-item">
+                            <a href="userrole-list" class="nav-link ${pageContext.request.requestURI.endsWith('/userrole-list') ? 'bg-selected' : ''}">
+                                <i class="fa fa-building me-2"></i>
+                                User Roles
+                            </a>
+                        </li>
+                        
                        
                         
                         
