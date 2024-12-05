@@ -25,29 +25,57 @@
             <label for="roomNumber">Room Number:</label>
             <input type="text" id="roomNumber" name="roomNumber" value="${room.roomNumber}" required>
 
-            <label for="roomType">Room Type:</label>
-            <input type="text" id="roomType" name="roomType" value="${room.roomType}" required>
+           <div class="form-group">
+    <label for="roomType">Room Type:</label>
+    <select id="roomType" name="roomType" class="form-control" required>
+        <option value="ICU" ${room.roomType == 'ICU' ? 'selected' : ''}>ICU</option>
+        <option value="General" ${room.roomType == 'General' ? 'selected' : ''}>General</option>
+        <option value="VIP" ${room.roomType == 'VIP' ? 'selected' : ''}>VIP</option>
+    </select>
+</div>
+           
 
-            <label for="availabilityStatus">Availability Status:</label>
-            <input type="text" id="availabilityStatus" name="availabilityStatus" value="${room.availabilityStatus}" required>
-
-            <label for="assignedPatientId">Assigned Patient ID:</label>
-            <input type="text" id="assignedPatientId" name="assignedPatientId" value="${room.assignedPatientId}" placeholder="Optional">
-
+            
+           <div class="form-group">
+    <label for="availabilityStatus">Availability Status:</label>
+    <select id="availabilityStatus" name="availabilityStatus" class="form-control" required>
+        <option value="Available" ${room.availabilityStatus == 'Available' ? 'selected' : ''}>Available</option>
+        <option value="Occupied" ${room.availabilityStatus == 'Occupied' ? 'selected' : ''}>Occupied</option>
+        <option value="Maintenance" ${room.availabilityStatus == 'Maintenance' ? 'selected' : ''}>Maintenance</option>
+    </select>
+</div>
+           
             <label for="floorNumber">Floor Number:</label>
             <input type="number" id="floorNumber" name="floorNumber" value="${room.floorNumber}" required>
 
-            <label for="departmentId">Department ID:</label>
-            <input type="text" id="departmentId" name="departmentId" value="${room.departmentId}" required>
+            
+            <div class="form-group">
+    <label for="departmentId">Department:</label>
+    <select id="departmentId" name="departmentId" class="form-control" required>
+        <option value="1" ${room.departmentId == '1' ? 'selected' : ''}>1. Surgical</option>
+        <option value="2" ${room.departmentId == '2' ? 'selected' : ''}>2. ICU</option>
+        <option value="3" ${room.departmentId == '3' ? 'selected' : ''}>3. ETU</option>
+        <option value="4" ${room.departmentId == '4' ? 'selected' : ''}>4. OPD</option>
+    </select>
+</div>
+            
 
+            
+            
+             <div class="form-group">
             <label for="lastCleanedAt">Last Cleaned At:</label>
-            <input type="text" id="lastCleanedAt" name="lastCleanedAt" value="${room.lastCleanedAt}" required>
+            <input type="text" id="lastCleanedAt" name="lastCleanedAt" value="${room.lastCleanedAt}" required class="form-control">
+        </div>
 
             <label for="dailyRate">Daily Rate:</label>
             <input type="number" id="dailyRate" name="dailyRate" value="${room.dailyRate}" step="0.01" required>
 
             <button type="submit">Update Room</button>
+            
+            
         </form>
     </div>
+   
 </body>
+ 
 </html>

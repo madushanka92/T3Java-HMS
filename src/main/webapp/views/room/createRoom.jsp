@@ -2,19 +2,23 @@
 <div class="container">
     <h2>Create Room</h2>
     <form method="post" action="createRoom">
-        <div class="form-group">
-            <label for="roomId">Room ID:</label>
-            <input type="text" id="roomId" name="roomId" required class="form-control">
-        </div>
+        
 
         <div class="form-group">
             <label for="roomNumber">Room Number:</label>
             <input type="text" id="roomNumber" name="roomNumber" required class="form-control">
         </div>
+        
+       
 
         <div class="form-group">
             <label for="roomType">Room Type:</label>
-            <input type="text" id="roomType" name="roomType" required class="form-control">
+            <select id="roomType" name="roomType" required class="form-control">
+            <option value="">-- Select Room Type --</option>
+            <option value="ICU">ICU</option>
+            <option value="General">General</option>
+            <option value="VIP">VIP</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -26,20 +30,26 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="assignedPatientId">Assigned Patient ID:</label>
-            <input type="text" id="assignedPatientId" name="assignedPatientId" class="form-control">
-        </div>
+        
 
         <div class="form-group">
             <label for="floorNumber">Floor Number:</label>
             <input type="number" id="floorNumber" name="floorNumber" required class="form-control">
         </div>
 
-        <div class="form-group">
-            <label for="departmentId">Department ID:</label>
-            <input type="text" id="departmentId" name="departmentId" required class="form-control">
-        </div>
+        
+    <div class="form-group">
+    <label for="departmentId">Department:</label>
+    <select id="departmentId" name="departmentId" required class="form-control">
+        <option value="">-- Select Department --</option>
+        <option value="1">1. Surgical</option>
+        <option value="2">2. ICU</option>
+        <option value="3">3. ETU</option>
+        <option value="4">4. OPD</option>
+        <option value="5">5. asd</option>
+    </select>
+</div>
+    
 
         <div class="form-group">
             <label for="lastCleanedAt">Last Cleaned At:</label>

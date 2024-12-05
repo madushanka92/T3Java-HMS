@@ -9,7 +9,6 @@
                 <th>Room Number</th>
                 <th>Room Type</th>
                 <th>Availability</th>
-                <th>Assigned Patient</th>
                 <th>Floor</th>
                 <th>Department</th>
                 <th>Last Cleaned</th>
@@ -25,7 +24,6 @@
                         <td>${room.roomNumber}</td>
                         <td>${room.roomType}</td>
                         <td>${room.availabilityStatus}</td>
-                        <td>${room.assignedPatientId}</td>
                         <td>${room.floorNumber}</td>
                         <td>${room.departmentId}</td>
                         <td>${room.lastCleanedAt}</td>
