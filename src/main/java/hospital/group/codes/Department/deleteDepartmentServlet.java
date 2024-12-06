@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/deleteDepartment")
+@WebServlet("/delete-department")
 public class deleteDepartmentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,7 @@ public class deleteDepartmentServlet extends HttpServlet {
                 // Check if the deletion was successful
                 if (isDeleted) {
                     // Redirect to the department list page after deletion
-                    response.sendRedirect("viewDepartment"); // Adjust the redirection path as needed
+                    response.sendRedirect("department-list"); // Adjust the redirection path as needed
                 } else {
                     // Handle failure to delete (e.g., department not found)
                     response.getWriter().write("Failed to delete department. Department may not exist.");

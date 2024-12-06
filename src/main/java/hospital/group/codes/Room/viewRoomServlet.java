@@ -60,11 +60,6 @@ public class viewRoomServlet extends HttpServlet {
 
             }
 
-            // Debugging: Print the fetched room data
-            System.out.println("Rooms retrieved from the database: ");
-            for (Room room : rooms) {
-                System.out.println(room.getRoomId() + " | " + room.getRoomNumber());
-            }
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -65,7 +65,7 @@
                             
 					   	<% if (permissions.containsKey(featureMap.get("Patient")) && 
 					      permissions.get(featureMap.get("Patient")).get("canUpdate")) { %>
-                            <a href="editPatient?id=${patient.patientId}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="edit-patient?id=${patient.patientId}" class="btn btn-primary btn-sm">Edit</a>
                          <% } %>
                             <!-- Delete Button with JavaScript confirmation -->
                             

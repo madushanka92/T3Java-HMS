@@ -19,7 +19,7 @@
                 <p style="color: red;" class="text-center">${message}</p>
             </c:if>
 
-            <form action="userForm" method="post">
+            <form action="create-user" method="post">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="firstName" class="form-label">First Name:</label>

@@ -96,14 +96,14 @@ public class UserServlet extends HttpServlet {
 
         // Check if save was successful and redirect accordingly
         if (isSaved.equals("User created successfully!")) {
-            response.sendRedirect(request.getContextPath() + "/userForm?action=success"); // Redirect to success page
+            response.sendRedirect(request.getContextPath() + "/create-user?action=success"); // Redirect to success page
         } else {
 
         	HttpSession session = request.getSession();
             session.setAttribute("errorMessage", isSaved);
             session.setAttribute("formData", newUser);
 
-            response.sendRedirect(request.getContextPath() + "/userForm?action=error");
+            response.sendRedirect(request.getContextPath() + "/create-user?action=error");
 
         }
 	}

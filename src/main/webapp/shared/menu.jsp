@@ -61,7 +61,7 @@
                          	<% if (permissions.containsKey(featureMap.get("PatientRecords")) && 
 						           permissions.get(featureMap.get("PatientRecords")).get("canRead")) { %>
 	                            <a href="viewReport" class="nav-link ${pageContext.request.requestURI.endsWith('/viewReport') ? 'bg-selected' : ''}">
-	                                <i class="fa fa-cog me-2"></i>
+	                                <i class="fa fa-notes-medical me-2"></i>
 	                                Patient Records
 	                            </a>
 	                         <% } %>
@@ -119,7 +119,7 @@
                          	<% if (permissions.containsKey(featureMap.get("Payment")) && 
 						           permissions.get(featureMap.get("Payment")).get("canRead")) { %>
 	    						<a href="${pageContext.request.contextPath}/paymentForm" class="nav-link ${pageContext.request.requestURI.endsWith('/addPayment') ? 'bg-selected' : ''}">
-	        						<i class="fa fa-credit-card me-2"></i>
+	        						<i class="fa fa-dollar-sign me-2"></i>
 	        						Payment
 	    						</a>
     						<% } %>
@@ -129,7 +129,7 @@
 						           permissions.get(featureMap.get("Rooms")).get("canRead")) { %>
 						 <li class="nav-item">
                             <a href="viewRoom" class="nav-link ${pageContext.request.requestURI.endsWith('/viewRoom') ? 'bg-selected' : ''}">
-                                <i class="fa fa-building me-2"></i>
+                                <i class="fa fa-clinic-medical me-2"></i>
                                 Rooms
                             </a>
 						    <% } %>
@@ -141,7 +141,7 @@
 						           permissions.get(featureMap.get("UserRoles")).get("canRead")) { %>
 						 <li class="nav-item">
                             <a href="userrole-list" class="nav-link ${pageContext.request.requestURI.endsWith('/userrole-list') ? 'bg-selected' : ''}">
-                                <i class="fa fa-building me-2"></i>
+                                <i class="fa fa-users-cog me-2"></i>
                                 User Roles
                             </a>
 						    <% } %>

@@ -4,7 +4,7 @@
             <h3 class="text-center">Patient Registration Form</h3>
         </div>
         <div class="card-body">
-            <form action="patientForm" method="post">
+            <form action="create-patient" method="post">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="firstName" class="form-label">First Name:</label>

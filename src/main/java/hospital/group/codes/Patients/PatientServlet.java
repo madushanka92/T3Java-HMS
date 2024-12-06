@@ -88,7 +88,7 @@ public class PatientServlet extends HttpServlet {
 
         // Check if save was successful and redirect accordingly
         if (isSaved) {
-            response.sendRedirect(request.getContextPath() + "/patientForm?action=success"); // Redirect to success page
+            response.sendRedirect(request.getContextPath() + "/create-patient?action=success"); // Redirect to success page
         } else {
             response.sendRedirect("views/error.jsp"); // Redirect to error page if save fails
         }

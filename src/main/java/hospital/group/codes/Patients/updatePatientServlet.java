@@ -39,7 +39,7 @@ public class updatePatientServlet extends HttpServlet {
             boolean isUpdated = patientService.updatePatient(updatedPatient);
 
             if (isUpdated) {
-                response.sendRedirect(request.getContextPath() + "/viewPatient");
+                response.sendRedirect(request.getContextPath() + "/patient-list");
             } else {
                 response.sendRedirect(request.getContextPath() + "/views/error.jsp");
             }

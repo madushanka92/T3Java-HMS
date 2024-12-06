@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Department List</h1>
-        <a href="add-department.jsp" class="btn btn-primary">Add New Department</a>
+        <a href="create-department" class="btn btn-primary">Add New Department</a>
         <table class="table table-bordered">
             <thead>
                 <tr>

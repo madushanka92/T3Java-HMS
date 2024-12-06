@@ -27,7 +27,7 @@ public class deletePatientServlet extends HttpServlet {
             boolean isDeleted = patientService.deletePatient(patientId); // Delete the patient
 
             if (isDeleted) {
-                response.sendRedirect(request.getContextPath() + "/viewPatient"); // Redirect to patient list page
+                response.sendRedirect(request.getContextPath() + "/patient-list"); // Redirect to patient list page
             } else {
                 response.sendRedirect(request.getContextPath() + "/views/error.jsp");
             }
