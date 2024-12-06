@@ -26,7 +26,7 @@ public class UserService {
                 "FROM User u " +
                 "LEFT JOIN UserRole ur ON u.roleId = ur.roleId " +
                 "LEFT JOIN Department d ON u.departmentId = d.departmentId " +
-                "WHERE u.userId = ?";
+                "WHERE u.email = ?";
 
         try (Connection connection = DatabaseConnection.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
