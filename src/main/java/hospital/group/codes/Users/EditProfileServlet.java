@@ -25,9 +25,14 @@ public class EditProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        if (session != null && session.getAttribute("user") != null) {
-            String userIdStr = (String) session.getAttribute("user");
-            Integer userId = Integer.parseInt(userIdStr);
+        if (session != null && session.getAttribute("loggedInUser") != null) {
+//            String userIdStr = (String) session.getAttribute("user");
+//            Integer userId = Integer.parseInt(userIdStr);
+            
+
+    		User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
+
+    		Integer userId = loggedInUser.getUserId();
 
             // Fetch the user details by userId
             User user = userService.getUserByUsername(userId);
@@ -41,7 +46,7 @@ public class EditProfileServlet extends HttpServlet {
                 request.setAttribute("departments", departments);
 
                 // Forward to user layout page with edit profile content
-                request.setAttribute("contentPage", "views/editProfile.jsp");
+                request.setAttribute("contentPage", "views/user/editProfile.jsp");
                 request.getRequestDispatcher("/user_layout.jsp").forward(request, response);
             } else {
                 response.sendRedirect("login.jsp");

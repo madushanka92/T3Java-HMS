@@ -20,9 +20,14 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("user") != null) {
-        	String usernameStr = (String) session.getAttribute("user");
-        	Integer username = Integer.parseInt(usernameStr);
+        if (session != null && session.getAttribute("loggedInUser") != null) {
+//        	String usernameStr = (String) session.getAttribute("user");
+//        	Integer username = Integer.parseInt(usernameStr);
+        	
+
+    		User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
+
+    		Integer username = loggedInUser.getUserId();
 
 
             // Fetch user details
