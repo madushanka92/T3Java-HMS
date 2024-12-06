@@ -1,15 +1,31 @@
+<%@page import="java.util.Map"%>
+<%@page import="hospital.group.dbservice.FeatureService"%>
+<%@page import="hospital.group.dbservice.FeatureMappingService"%>
+<%@page import="hospital.group.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Reports</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/viewReports.css">
-</head>
-<body>
+<%
+
+	User loggedInUser = (User) session.getAttribute("loggedInUser");
+	int roleId = loggedInUser.getRoleId();
+	FeatureMappingService featureMappingService = new FeatureMappingService();
+	FeatureService featureService = new FeatureService();
+	
+	// Get all feature permissions for the user's role
+    Map<Integer, Map<String, Boolean>> permissions = featureMappingService.getFeaturePermissionsByRole(roleId);
+
+    // Get feature names mapped to IDs
+    Map<String, Integer> featureMap = featureService.getFeatureNameToIdMap();
+
+%>
+
     <div class="container">
+    	
+    	<% if (permissions.containsKey(featureMap.get("PatientRecords")) && 
+	           permissions.get(featureMap.get("PatientRecords")).get("canCreate")) { %>
+        		<a href="createReport" class="btn btn-primary mb-4">Add New Record</a>
+         <% } %>
+        
         <h2>View Medical Reports</h2>
 
         <!-- Patient Selection Form -->
@@ -23,7 +39,12 @@
                     </c:forEach>
                 </select>
             </div>
+            
+    	<% if (permissions.containsKey(featureMap.get("PatientRecords")) && 
+	           permissions.get(featureMap.get("PatientRecords")).get("canRead")) { %>
+	           
             <button type="submit" class="btn btn-primary">View Reports</button>
+            <% } %>
         </form>
 
         <!-- Reports Table -->
@@ -56,5 +77,5 @@
             </c:if>
         </div>
     </div>
-</body>
-</html>
+
+

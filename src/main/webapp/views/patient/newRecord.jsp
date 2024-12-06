@@ -49,7 +49,7 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Create Report</button>
-            <a href="${pageContext.request.contextPath}/viewReports" class="btn btn-secondary">Cancel</a>
+            <a href="${pageContext.request.contextPath}/viewReport" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 

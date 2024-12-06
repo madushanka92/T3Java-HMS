@@ -67,7 +67,7 @@ public class ReportService {
             statement.setString(2, report.getDiagnosis());
             statement.setString(3, report.getTreatment());
             statement.setDate(4, java.sql.Date.valueOf(report.getReportDate()));
-            statement.setString(5, report.getReportId());
+            statement.setInt(5, report.getReportId());
 
             int rowsAffected = statement.executeUpdate();
             return rowsAffected > 0;

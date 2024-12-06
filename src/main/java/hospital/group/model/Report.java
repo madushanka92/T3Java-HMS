@@ -3,7 +3,7 @@ package hospital.group.model;
 import java.time.LocalDate;
 
 public class Report {
-    private String reportId;
+    private int reportId;
     private int patientId;
     private String diagnosis;
     private String treatment;
@@ -11,7 +11,7 @@ public class Report {
 
     // Constructor
     public Report(int reportId, int patientId, String diagnosis, String treatment, LocalDate reportDate) {
-        this.reportId = String.valueOf(reportId);
+        this.reportId = reportId;
         this.patientId = patientId;
         this.diagnosis = diagnosis;
         this.treatment = treatment;
@@ -19,21 +19,19 @@ public class Report {
     }
 
     public Report(int patientId, String diagnosis, String treatment, LocalDate reportDate) {
-        this.reportId = String.valueOf(reportId);
+        this.reportId = reportId;
         this.patientId = patientId;
         this.diagnosis = diagnosis;
         this.treatment = treatment;
         this.reportDate = reportDate;
     }
 
-
-
 	// Getters and Setters
-    public String getReportId() {
+    public int getReportId() {
         return reportId;
     }
 
-    public void setReportId(String reportId) {
+    public void setReportId(int reportId) {
         this.reportId = reportId;
     }
 
