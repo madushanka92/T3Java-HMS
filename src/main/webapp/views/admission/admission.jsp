@@ -23,6 +23,15 @@
 <div class="container admission-list">
     <h2>Admissions List</h2>
     
+    <c:if test="${not empty sessionScope.message}">
+	    <div class="alert alert-success">${sessionScope.message}</div>
+	    <c:remove var="message" scope="session"/>
+	</c:if>
+	<c:if test="${not empty sessionScope.error}">
+	    <div class="alert alert-danger">${sessionScope.error}</div>
+	    <c:remove var="error" scope="session"/>
+	</c:if>
+	    
     
    	<% if (permissions.containsKey(featureMap.get("Admissions")) && 
       permissions.get(featureMap.get("Admissions")).get("canCreate")) { %>

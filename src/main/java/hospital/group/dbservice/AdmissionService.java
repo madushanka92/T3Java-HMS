@@ -143,4 +143,17 @@ public class AdmissionService {
             return false;
         }
     }
+
+	public boolean deleteAdmission(int admissionId) {
+	    String sql = "DELETE FROM Admissions WHERE admissionId = ?";
+	    try (Connection connection = DatabaseConnection.connect();
+	         PreparedStatement statement = connection.prepareStatement(sql)) {
+
+	        statement.setInt(1, admissionId);
+	        return statement.executeUpdate() > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 }
